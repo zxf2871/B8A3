@@ -2,7 +2,9 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Item" />
+    <item
+        android:id="@+id/app_bar_start_activity"
+        android:title="打开一个activity" />
     <item
         android:id="@+id/app_bar_search"
         android:actionViewClass="android.widget.SearchView"
