@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.study.b8a3.R;
+import com.study.b8a3.main.B8a3Application;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,9 +37,23 @@ public class MainActivity extends AppCompatActivity {
             case R.id.app_bar_switch:
                 Toast.makeText(this, item.getTitle(),Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.app_bar_exit:
+                finish();
+                break;
             case R.id.app_bar_start_activity:
                 Intent intent = new Intent(this, TestActivity.class);
-                startActivity(intent);
+                //如果没有activity标准的activvity需要用到FALG_ACTIVITY_NEW_TASK
+                //这种启动是显示的启动
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                B8a3Application.sContext.startActivity(intent);
+                break;
+
+            case R.id.app_bar_start_second_activity:
+                Intent intentSecondActivity = new Intent();
+                intentSecondActivity.setAction("com.study.b8a3.intent.SECOND_ACTIVITY");
+                //一般启动activity的时候需要指定category在manifest里面配置了default就不用指定了 android.intent.category.DEFAULT
+                this.startActivity(intentSecondActivity);
                 break;
         }
         return true;
