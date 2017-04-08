@@ -22,5 +22,9 @@
         android:id="@+id/app_bar_start_second_activity"
         android:title="第二个activity"
         app:actionLayout="@layout/switch_item" />
+    <item
+        android:id="@+id/app_bar_start_second_cat_activity"
+        android:title="第二个activity 带有category"
+        app:actionLayout="@layout/switch_item" />
 
 </menu>

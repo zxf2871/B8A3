@@ -55,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
                 //一般启动activity的时候需要指定category在manifest里面配置了default就不用指定了 android.intent.category.DEFAULT
                 this.startActivity(intentSecondActivity);
                 break;
+            case R.id.app_bar_start_second_cat_activity:
+                Intent secondActivityCatMy = new Intent();
+                secondActivityCatMy.setAction("com.study.b8a3.intent.SECOND_ACTIVITY");
+                secondActivityCatMy.addCategory("com.study.b8a3.category.SECOND_ACTIVITY_MY");
+                //一般启动activity的时候需要指定category在manifest里面配置了default就不用指定了 android.intent.category.DEFAULT
+                this.startActivity(secondActivityCatMy);
+                break;
         }
         return true;
     }

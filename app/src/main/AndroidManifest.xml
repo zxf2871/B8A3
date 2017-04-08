@@ -24,6 +24,13 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
             </activity>
+        <activity android:name=".activity.SecondMyActivity">
+            <intent-filter>
+                <action android:name="com.study.b8a3.intent.SECOND_ACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.study.b8a3.category.SECOND_ACTIVITY_MY"/>
+            </intent-filter>
+            </activity>
     </application>
 
 </manifest>
