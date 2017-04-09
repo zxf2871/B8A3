@@ -94,4 +94,8 @@ public class SecondActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DialogActivity.class);
         startActivity(intent);
     }
+
+    public void openSingleInstanceActivity(View view) {
+        startActivity(new Intent(SecondActivity.this, SingleInstanceActivity.class));
+    }
 }

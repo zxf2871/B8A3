@@ -44,8 +44,12 @@
                 <data android:scheme="http" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DialogActivity"
-            android:theme="@android:style/Theme.Dialog"></activity>
+        <activity
+            android:name=".activity.DialogActivity"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".activity.SingleInstanceActivity"
+            android:launchMode="singleInstance"></activity>
     </application>
 
 </manifest>
