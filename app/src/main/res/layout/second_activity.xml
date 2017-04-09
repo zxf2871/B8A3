@@ -7,11 +7,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Second activity"
+        android:text="Second activity演示activity生命周期各个阶段方法"
         />
     <Button
-        android:text="打开mainactivity"
+        android:textAllCaps="false"
+        android:text="打开MainActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_second_activity"/>
+    <Button
+        android:textAllCaps="false"
+        android:text="打开DialogActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openDialogActivity"/>
 </LinearLayout>
