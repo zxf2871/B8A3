@@ -24,8 +24,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ;
-
         // Example of a call to a native method
         mTextView = (TextView) findViewById(R.id.sample_text);
         mBackString = (String) mTextView.getText();

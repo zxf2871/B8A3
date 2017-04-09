@@ -26,8 +26,6 @@ public class SecondActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
         Log.e("---------" + TAG, "onCreate");
-        ;
-
         if (savedInstanceState != null) {
             saveString = savedInstanceState.getString("saved_data");
         }
