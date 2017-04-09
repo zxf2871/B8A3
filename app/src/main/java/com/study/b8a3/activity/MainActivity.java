@@ -1,5 +1,6 @@
 package com.study.b8a3.activity;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -15,13 +16,18 @@ import com.study.b8a3.main.B8a3Application;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView mTextView;
+    String mBackString;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // Example of a call to a native method
-        TextView tv = (TextView) findViewById(R.id.sample_text);
+        mTextView = (TextView) findViewById(R.id.sample_text);
+        mBackString = (String) mTextView.getText();
         findViewById(R.id.btn_baidu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,12 +57,15 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.app_bar_start_activity:
-                Intent intent = new Intent(this, TestActivity.class);
+                Intent intent = new Intent(this, FirstActivity.class);
                 //如果没有activity标准的activvity需要用到FALG_ACTIVITY_NEW_TASK
                 //这种启动是显示的启动
 
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                B8a3Application.sContext.startActivity(intent);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("data", mBackString);
+                //context new task不会传递参数
+//                B8a3Application.sContext.startActivity(intent);
+                startActivityForResult(intent, 101);
                 break;
 
             case R.id.app_bar_start_second_activity:
@@ -73,11 +82,26 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.app_bar_start_third_activity:
                 Intent thirdActivity = new Intent();
-                thirdActivity.setAction("com.study.b8a3.intent.SECOND_ACTIVITY");
-                thirdActivity.addCategory("com.study.b8a3.category.SECOND_ACTIVITY_MY");
+                thirdActivity.setAction(Intent.ACTION_DIAL);
+                thirdActivity.setData(Uri.parse("tel:10086"));
                 this.startActivity(thirdActivity);
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode){
+            case RESULT_OK:
+                mBackString = "Ok: " + data.getStringExtra("param");
+                break;
+            case RESULT_CANCELED:
+                mBackString = "canceled: " + data.getStringExtra("param");
+                break;
+        }
+        mTextView.setText(mBackString);
+
     }
 }

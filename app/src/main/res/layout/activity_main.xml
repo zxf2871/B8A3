@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.study.b8a3.activity.MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/sample_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_baidu"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.879"
-        android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.6" />
-    <Button
-        android:id="@+id/btn_baidu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="打开百度网页"
-        tools:layout_editor_absoluteY="68dp"
-        app:layout_constraintRight_toLeftOf="@+id/sample_text"
-        android:layout_marginRight="-19dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/common_margin"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/sample_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="起始参数" />
+
+        <Button
+            android:id="@+id/btn_baidu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开百度网页" />
+    </LinearLayout>
+
+
+</LinearLayout>

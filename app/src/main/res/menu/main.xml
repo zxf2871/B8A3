@@ -17,7 +17,7 @@
         app:actionLayout="@layout/switch_item" />
     <item
         android:id="@+id/app_bar_start_activity"
-        android:title="打开一个activity" />
+        android:title="第一个activity参数:abcdefghijklmn" />
     <item
         android:id="@+id/app_bar_start_second_activity"
         android:title="第二个activity"
@@ -28,7 +28,7 @@
         app:actionLayout="@layout/switch_item" />
     <item
         android:id="@+id/app_bar_start_third_activity"
-        android:title="打开第三个activity"
+        android:title="拨打10086"
         app:actionLayout="@layout/switch_item" />
 
 </menu>
