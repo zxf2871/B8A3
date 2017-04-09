@@ -1,10 +1,12 @@
 package com.study.b8a3.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
+        findViewById(R.id.btn_baidu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://www.baidu.com"));
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -59,8 +69,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent secondActivityCatMy = new Intent();
                 secondActivityCatMy.setAction("com.study.b8a3.intent.SECOND_ACTIVITY");
                 secondActivityCatMy.addCategory("com.study.b8a3.category.SECOND_ACTIVITY_MY");
-                //一般启动activity的时候需要指定category在manifest里面配置了default就不用指定了 android.intent.category.DEFAULT
                 this.startActivity(secondActivityCatMy);
+                break;
+            case R.id.app_bar_start_third_activity:
+                Intent thirdActivity = new Intent();
+                thirdActivity.setAction("com.study.b8a3.intent.SECOND_ACTIVITY");
+                thirdActivity.addCategory("com.study.b8a3.category.SECOND_ACTIVITY_MY");
+                this.startActivity(thirdActivity);
                 break;
         }
         return true;
