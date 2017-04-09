@@ -16,7 +16,7 @@ import com.study.b8a3.R;
  * Created by B8A3 on 2017/4/7.
  */
 
-public class FirstActivity extends Activity {
+public class FirstActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();
 
     private Button mButtonSuccess;
@@ -24,7 +24,7 @@ public class FirstActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(">>>>>" + TAG, "Task id is " + getTaskId());
+        ;
         setContentView(R.layout.first_activity);
         Intent intent = getIntent();
         ((TextView)findViewById(R.id.data_show)).setText(intent.getStringExtra("data"));
@@ -57,6 +57,7 @@ public class FirstActivity extends Activity {
         intent1.putExtra("param", "摁下了返回键");
         setResult(RESULT_CANCELED, intent1);
         super.onBackPressed();
+        finish();
 
     }
 }

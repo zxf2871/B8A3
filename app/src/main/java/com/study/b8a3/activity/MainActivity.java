@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.study.b8a3.R;
 import com.study.b8a3.main.B8a3Application;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();
 
     TextView mTextView;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.e(">>>>>" + TAG, "Task id is " + getTaskId());
+        ;
 
         // Example of a call to a native method
         mTextView = (TextView) findViewById(R.id.sample_text);

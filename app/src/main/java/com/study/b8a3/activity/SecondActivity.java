@@ -16,7 +16,7 @@ import com.study.b8a3.R;
  * Created by B8A3 on 2017/4/8.
  */
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends BaseActivity {
     public static String TAG = SecondActivity.class.getSimpleName();
 
 
@@ -27,7 +27,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
         Log.e("---------" + TAG, "onCreate");
-        Log.e(">>>>>" + TAG, "Task id is " + getTaskId());
+        ;
 
         if (savedInstanceState != null) {
             saveString = savedInstanceState.getString("saved_data");

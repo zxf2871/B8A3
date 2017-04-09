@@ -8,13 +8,13 @@ import android.view.View;
 
 import com.study.b8a3.R;
 
-public class SingleInstanceActivity extends AppCompatActivity {
+public class SingleInstanceActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(">>>>>" + TAG, "Task id is " + getTaskId());
+        ;
 
         setContentView(R.layout.activity_single_instance);
     }
