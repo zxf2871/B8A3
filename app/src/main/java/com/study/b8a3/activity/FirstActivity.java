@@ -46,4 +46,13 @@ public class FirstActivity extends Activity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent();
+        intent1.putExtra("param", "摁下了返回键");
+        setResult(RESULT_CANCELED, intent1);
+        super.onBackPressed();
+
+    }
 }
