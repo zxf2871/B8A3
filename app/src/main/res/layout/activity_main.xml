@@ -26,6 +26,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="打开百度网页" />
+
+        <Button
+            android:id="@+id/btn_open_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="openLayoutActivity"
+            android:text="打开布局页" />
     </LinearLayout>
 
 

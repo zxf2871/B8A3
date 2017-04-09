@@ -103,4 +103,8 @@ public class MainActivity extends BaseActivity {
         mTextView.setText(mBackString);
 
     }
+
+    public void openLayoutActivity(View view) {
+        LayoutActivity.startActivity(this);
+    }
 }

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.study.b8a3.activity.LayoutActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/common_margin"
+        android:layout_weight="1"
+        android:background="@color/indigo_color">
+
+        <TextView
+            android:id="@+id/tv_center"
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_centerInParent="true"
+            android:background="@color/purple_color"
+            android:gravity="center"
+            android:text="中间"
+            android:textSize="@dimen/common_font_size" />
+
+        <TextView
+            android:id="@+id/tv_left_top"
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_above="@id/tv_center"
+            android:layout_toLeftOf="@id/tv_center"
+            android:background="@color/yellow_color"
+            android:gravity="center"
+            android:text="左上"
+            android:textSize="@dimen/common_font_size" />
+
+        <TextView
+            android:id="@+id/tv_left_bottom"
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_below="@id/tv_center"
+            android:layout_toLeftOf="@id/tv_center"
+            android:background="@color/blue_color"
+            android:gravity="center"
+            android:text="左下"
+            android:textSize="@dimen/common_font_size" />
+
+        <TextView
+            android:id="@+id/tv_right_top"
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_above="@id/tv_center"
+            android:layout_toRightOf="@id/tv_center"
+            android:background="@color/green_color"
+            android:gravity="center"
+            android:text="右上"
+            android:textSize="@dimen/common_font_size" />
+
+        <TextView
+            android:id="@+id/tv_right_bottom"
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_below="@id/tv_center"
+            android:layout_toRightOf="@id/tv_center"
+            android:background="@color/red_color"
+            android:gravity="center"
+            android:text="右下"
+            android:textSize="@dimen/common_font_size" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/common_margin"
+        android:layout_weight="1"
+        android:background="@color/orange_color">
+
+        <TextView
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_gravity="center"
+            android:background="@color/purple_color"
+            android:gravity="center"
+            android:text="中间"
+            android:textSize="@dimen/common_font_size" />
+
+        <TextView
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_gravity="left|top"
+            android:background="@color/yellow_color"
+
+            android:gravity="center"
+            android:text="左上"
+            android:textSize="@dimen/common_font_size" />
+
+        <TextView
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_gravity="left|bottom"
+            android:background="@color/blue_color"
+            android:gravity="center"
+
+            android:text="左下"
+            android:textSize="@dimen/common_font_size" />
+
+        <TextView
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_gravity="right|top"
+            android:background="@color/green_color"
+            android:gravity="center"
+            android:text="右上"
+            android:textSize="@dimen/common_font_size" />
+
+        <TextView
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_gravity="right|bottom"
+            android:background="@color/red_color"
+            android:gravity="center"
+            android:text="右下"
+            android:textSize="@dimen/common_font_size" />
+    </FrameLayout>
+
+    <android.support.percent.PercentFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/common_margin"
+        android:layout_weight="1"
+        android:background="@color/green_color">
+
+        <TextView
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_gravity="center"
+            android:background="@color/purple_color"
+            android:gravity="center"
+            android:text="中间"
+            android:textSize="@dimen/common_font_size"
+            app:layout_heightPercent="34%"
+            app:layout_widthPercent="34%" />
+
+        <TextView
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_gravity="left|top"
+            android:background="@color/yellow_color"
+            android:gravity="center"
+            android:text="左上"
+            android:textSize="@dimen/common_font_size"
+            app:layout_heightPercent="33%"
+            app:layout_widthPercent="67%" />
+
+        <TextView
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_gravity="left|bottom"
+            android:background="@color/blue_color"
+            android:gravity="center"
+            android:text="左下"
+            android:textSize="@dimen/common_font_size"
+            app:layout_heightPercent="67%"
+            app:layout_widthPercent="33%" />
+
+        <TextView
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_gravity="right|top"
+            android:background="@color/orange_color"
+            android:gravity="center"
+            android:text="右上"
+            android:textSize="@dimen/common_font_size"
+            app:layout_heightPercent="67%"
+            app:layout_widthPercent="33%" />
+
+        <TextView
+            android:layout_width="@dimen/common_width"
+            android:layout_height="@dimen/common_height"
+            android:layout_gravity="right|bottom"
+            android:background="@color/red_color"
+            android:gravity="center"
+            android:text="右下"
+            android:textSize="@dimen/common_font_size"
+            app:layout_heightPercent="33%"
+            app:layout_widthPercent="67%" />
+    </android.support.percent.PercentFrameLayout>
+</LinearLayout>
