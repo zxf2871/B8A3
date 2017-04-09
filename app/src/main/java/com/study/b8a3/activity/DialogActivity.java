@@ -1,11 +1,9 @@
 package com.study.b8a3.activity;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.study.b8a3.R;
+import com.study.b8a3.main.BaseActivity;
 
 public class DialogActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();

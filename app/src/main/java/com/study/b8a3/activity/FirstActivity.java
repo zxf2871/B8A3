@@ -1,16 +1,16 @@
 package com.study.b8a3.activity;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.study.b8a3.R;
+import com.study.b8a3.main.BaseActivity;
 
 /**
  * Created by B8A3 on 2017/4/7.
@@ -58,6 +58,13 @@ public class FirstActivity extends BaseActivity {
         setResult(RESULT_CANCELED, intent1);
         super.onBackPressed();
         finish();
+
+    }
+
+    public static void startActivity(Context context){
+        Intent intent = new Intent(context, FirstActivity.class);
+//        intent.putExtra("data1", data);
+        context.startActivity(intent);
 
     }
 }

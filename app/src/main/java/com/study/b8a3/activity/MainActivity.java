@@ -1,11 +1,8 @@
 package com.study.b8a3.activity;
 
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.study.b8a3.R;
-import com.study.b8a3.main.B8a3Application;
+import com.study.b8a3.main.ActivityController;
+import com.study.b8a3.main.BaseActivity;
 
 public class MainActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();
@@ -57,7 +55,7 @@ public class MainActivity extends BaseActivity {
                 Toast.makeText(this, item.getTitle(),Toast.LENGTH_SHORT).show();
                 break;
             case R.id.app_bar_exit:
-                finish();
+                ActivityController.finishAll();
                 break;
             case R.id.app_bar_start_activity:
                 Intent intent = new Intent(this, FirstActivity.class);

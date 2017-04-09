@@ -3,14 +3,13 @@ package com.study.b8a3.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.text.TextUtilsCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.study.b8a3.R;
+import com.study.b8a3.main.BaseActivity;
 
 /**
  * Created by B8A3 on 2017/4/8.
