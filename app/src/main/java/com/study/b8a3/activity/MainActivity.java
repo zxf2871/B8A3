@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.study.b8a3.R;
 import com.study.b8a3.main.B8a3Application;
 
 public class MainActivity extends AppCompatActivity {
+    public static String TAG = ThirdActivity.class.getSimpleName();
 
     TextView mTextView;
     String mBackString;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.e(">>>>>" + TAG, "Task id is " + getTaskId());
 
         // Example of a call to a native method
         mTextView = (TextView) findViewById(R.id.sample_text);

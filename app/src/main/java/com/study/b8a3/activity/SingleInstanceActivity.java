@@ -3,15 +3,19 @@ package com.study.b8a3.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.study.b8a3.R;
 
 public class SingleInstanceActivity extends AppCompatActivity {
+    public static String TAG = ThirdActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e(">>>>>" + TAG, "Task id is " + getTaskId());
+
         setContentView(R.layout.activity_single_instance);
     }
 

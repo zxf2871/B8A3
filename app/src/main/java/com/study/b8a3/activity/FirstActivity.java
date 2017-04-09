@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,11 +17,14 @@ import com.study.b8a3.R;
  */
 
 public class FirstActivity extends Activity {
+    public static String TAG = ThirdActivity.class.getSimpleName();
+
     private Button mButtonSuccess;
     private Button mButtonError;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e(">>>>>" + TAG, "Task id is " + getTaskId());
         setContentView(R.layout.first_activity);
         Intent intent = getIntent();
         ((TextView)findViewById(R.id.data_show)).setText(intent.getStringExtra("data"));

@@ -27,6 +27,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
         Log.e("---------" + TAG, "onCreate");
+        Log.e(">>>>>" + TAG, "Task id is " + getTaskId());
 
         if (savedInstanceState != null) {
             saveString = savedInstanceState.getString("saved_data");
