@@ -6,4 +6,5 @@
     <dimen name="common_width">80dp</dimen>
     <dimen name="common_height">30dp</dimen>
     <dimen name="common_font_size">16sp</dimen>
+    <dimen name="title_bar_height">40dp</dimen>
 </resources>
