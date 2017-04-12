@@ -27,7 +27,6 @@ public class MainActivity extends BaseActivity {
         // Example of a call to a native method
         mTextView = (TextView) findViewById(R.id.sample_text);
         mBackString = (String) mTextView.getText();
-        getSupportActionBar().hide();
         findViewById(R.id.btn_baidu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

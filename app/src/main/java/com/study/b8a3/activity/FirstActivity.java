@@ -34,6 +34,7 @@ public class FirstActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
+        getSupportActionBar().hide();
         Intent intent = getIntent();
         ((TextView)findViewById(R.id.data_show)).setText(intent.getStringExtra("data"));
         mButtonSuccess = (Button)findViewById(R.id.button_sucess);
