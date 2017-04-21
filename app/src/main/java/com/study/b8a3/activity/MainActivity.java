@@ -107,4 +107,8 @@ public class MainActivity extends BaseActivity {
     public void openLayoutActivity(View view) {
         LayoutActivity.startActivity(this);
     }
+
+    public void btnOpenAnimation(View view) {
+        AnimationActivity.startActivity(this);
+    }
 }

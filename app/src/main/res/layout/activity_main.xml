@@ -34,6 +34,13 @@
             android:layout_height="wrap_content"
             android:onClick="openLayoutActivity"
             android:text="打开布局页" />
+
+        <Button
+            android:id="@+id/btn_open_animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnOpenAnimation"
+            android:text="打开动画" />
     </LinearLayout>
 
 
