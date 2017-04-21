@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.study.b8a3">
-
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <application
         android:name=".main.B8a3Application"
         android:allowBackup="true"
@@ -52,6 +52,7 @@
             android:launchMode="singleInstance" />
         <activity android:name=".activity.LayoutActivity"></activity>
         <activity android:name=".activity.AnimationActivity"></activity>
+        <activity android:name=".FloatingWindowActivity"></activity>
     </application>
 
 </manifest>

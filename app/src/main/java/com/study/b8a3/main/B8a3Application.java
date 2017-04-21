@@ -9,10 +9,18 @@ import android.content.Context;
 
 public class B8a3Application extends Application {
 
-    public static Context sContext;
+    public static B8a3Application sContext;
     @Override
     public void onCreate() {
         super.onCreate();
         sContext = this;
+    }
+
+    public static Context getContext(){
+        return sContext;
+    }
+
+    public static B8a3Application getInstance(){
+        return sContext;
     }
 }
