@@ -112,4 +112,8 @@ public class MainActivity extends BaseActivity {
     public void openRecycleViewActivity(View view) {
         RecyclerViewActivity.openActivity(this);
     }
+
+    public void btnOpenAnimation(View view) {
+        AnimationActivity.startActivity(this);
+    }
 }

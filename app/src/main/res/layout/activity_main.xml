@@ -36,6 +36,13 @@
             android:text="打开布局页" />
 
         <Button
+            android:id="@+id/btn_open_animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnOpenAnimation"
+            android:text="打开动画" />
+
+        <Button
             android:textAllCaps="false"
             android:id="@+id/btn_open_recycleview"
             android:layout_width="wrap_content"
