@@ -51,6 +51,7 @@
             android:name=".activity.SingleInstanceActivity"
             android:launchMode="singleInstance" />
         <activity android:name=".activity.LayoutActivity"></activity>
+        <activity android:name=".activity.RecyclerViewActivity"></activity>
     </application>
 
 </manifest>
