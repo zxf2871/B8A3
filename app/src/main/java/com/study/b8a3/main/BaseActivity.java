@@ -12,12 +12,15 @@ import android.util.Log;
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected String TAG;
+    public static int i=0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TAG = getClass().getSimpleName();
         Log.e(">>>>>" + TAG, "Task id is " + getTaskId());
+        Log.e("----i-----", ""+i++);
+
         ActivityController.addActivity(this);
     }
 
