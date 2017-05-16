@@ -3,6 +3,7 @@ package com.study.b8a3.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -106,6 +107,10 @@ public class MainActivity extends BaseActivity {
 
     public void openLayoutActivity(View view) {
         LayoutActivity.startActivity(this);
+    }
+
+    public void openRecycleViewActivity(View view) {
+        RecyclerViewActivity.openActivity(this);
     }
 
     public void btnOpenAnimation(View view) {

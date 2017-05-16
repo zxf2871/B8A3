@@ -53,6 +53,11 @@
         <activity android:name=".activity.LayoutActivity"></activity>
         <activity android:name=".activity.AnimationActivity"></activity>
         <activity android:name=".FloatingWindowActivity"></activity>
+        <activity android:name=".activity.LayoutActivity"
+            android:process=":another"></activity>
+        <activity android:name=".activity.AnimationActivity"
+            android:process="com.b8a3.another.process"></activity>
+        <activity android:name=".activity.RecyclerViewActivity"></activity>
     </application>
 
 </manifest>
