@@ -14,7 +14,6 @@ public class B8a3Application extends Application {
 
     private static String TAG = B8a3Application.class.getSimpleName();
 
-    public static Context sContext;
     public static B8a3Application sContext;
     @Override
     public void onCreate() {
