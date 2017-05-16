@@ -13,13 +13,14 @@ import android.widget.Toast;
 import com.study.b8a3.R;
 import com.study.b8a3.main.ActivityController;
 import com.study.b8a3.main.BaseActivity;
+import com.study.b8a3.view.SimmerButton;
 
 public class MainActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();
 
     TextView mTextView;
     String mBackString;
-
+    SimmerButton mSimmerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,8 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+        mSimmerButton = (SimmerButton) findViewById(R.id.btn_simmer_show);
+        mSimmerButton.startSimmer();
     }
 
     @Override
@@ -115,5 +118,13 @@ public class MainActivity extends BaseActivity {
 
     public void btnOpenAnimation(View view) {
         AnimationActivity.startActivity(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mSimmerButton!=null){
+            mSimmerButton.cancel();
+        }
     }
 }
