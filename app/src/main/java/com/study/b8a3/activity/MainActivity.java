@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
             }
         });
         mSimmerButton = (SimmerButton) findViewById(R.id.btn_simmer_show);
-        mSimmerButton.startSimmer();
+//        mSimmerButton.startSimmer();
     }
 
     @Override

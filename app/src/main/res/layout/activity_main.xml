@@ -51,10 +51,13 @@
             android:text="打开RecycleView"
             />
         <com.study.b8a3.view.SimmerButton
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:id="@+id/btn_simmer_show"
-            android:onClick="openRecycleViewActivity"
+            android:background="@color/blue_color"
+            android:textColor="#ffffff"
             android:text="显示闪烁BUTTON实例"/>
     </LinearLayout>
 

@@ -4,6 +4,13 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Shader;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -25,10 +32,12 @@ public class SimmerButton extends Button {
     private long duration;
     private long startDelay;
     private int direction;
-    private Animator.AnimatorListener animatorListener;
+    private float gradientX;
+    private Paint mPaint;
 
     private boolean isShimmering;
-
+    private LinearGradient linearGradient;
+    private Matrix linearGradientMatrix;
 
     public SimmerButton(Context context) {
         this(context, null);
@@ -40,12 +49,35 @@ public class SimmerButton extends Button {
 
     public SimmerButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    private void init() {
         repeatCount = DEFAULT_REPEAT_COUNT;
         duration = DEFAULT_DURATION;
         startDelay = DEFAULT_START_DELAY;
         direction = DEFAULT_DIRECTION;
-    }
+        linearGradient = new LinearGradient(-this.getWidth(), 0, 0, 0,
+                new int[]{
+                        Color.rgb(255,0,255),
+                        Color.rgb(0,0,255),
+                        Color.rgb(0,255,255),
 
+                },
+                new float[]{
+                        0,
+                        0.9f,
+                        1
+                },
+                Shader.TileMode.CLAMP
+        );
+        mPaint = new Paint();
+        mPaint.setShader(linearGradient);
+
+        linearGradientMatrix = new Matrix();
+
+
+    }
 
     public void startSimmer() {
 
@@ -104,10 +136,6 @@ public class SimmerButton extends Button {
                     }
                 });
 
-                if (animatorListener != null) {
-                    animator.addListener(animatorListener);
-                }
-
                 animator.start();
             }
         };
@@ -123,5 +151,43 @@ public class SimmerButton extends Button {
 
     public boolean isAnimating() {
         return animator != null && animator.isRunning();
+    }
+
+    //需要被keep
+    public void setGradientX(float gradientX) {
+        this.gradientX = gradientX;
+        Log.e(">>>>>>>>", "simmer setGradientX "+gradientX);
+
+        invalidate();
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+
+        //only draw the shader gradient over the text while animating
+//        if (isShimmering) {
+//
+//            // first onDraw() when shimmering
+//            if (mPaint.getShader() == null) {
+//                mPaint.setShader(linearGradient);
+//            }
+//
+//            // translate the shader local matrix
+//            linearGradientMatrix.setTranslate(2 * gradientX, 0);
+//
+//            // this is required in order to invalidate the shader's position
+//            linearGradient.setLocalMatrix(linearGradientMatrix);
+//
+//        } else {
+//            // we're not animating, remove the shader from the paint
+//            mPaint.setShader(null);
+//        }
+        super.onDraw(canvas);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        startSimmer();
     }
 }
