@@ -4,8 +4,6 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -33,19 +31,19 @@ public class SimmerButton extends Button {
 
 
     public SimmerButton(Context context) {
-        super(context);
-        repeatCount = DEFAULT_REPEAT_COUNT;
-        duration = DEFAULT_DURATION;
-        startDelay = DEFAULT_START_DELAY;
-        direction = DEFAULT_DIRECTION;
+        this(context, null);
     }
 
     public SimmerButton(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public SimmerButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        repeatCount = DEFAULT_REPEAT_COUNT;
+        duration = DEFAULT_DURATION;
+        startDelay = DEFAULT_START_DELAY;
+        direction = DEFAULT_DIRECTION;
     }
 
 
@@ -70,7 +68,6 @@ public class SimmerButton extends Button {
 
                 animator = ObjectAnimator.ofFloat(SimmerButton.this, "gradientX", fromX, toX);
                 animator.setRepeatCount(repeatCount);
-                animator.setRepeatMode(ValueAnimator.RESTART);
                 animator.setDuration(duration);
                 animator.setStartDelay(startDelay);
                 animator.addListener(new Animator.AnimatorListener() {
@@ -126,36 +123,5 @@ public class SimmerButton extends Button {
 
     public boolean isAnimating() {
         return animator != null && animator.isRunning();
-    }
-    private Paint paint;
-    @Override
-    protected void onDraw(Canvas canvas) {
-        if(paint == null){
-            paint = getPaint();
-        }
-        // only draw the shader gradient over the text while animating
-        if (isShimmering) {
-
-//            // first onDraw() when shimmering
-//            if (paint.getShader() == null) {
-//                paint.setShader(linearGradient);
-//            }
-//
-//            // translate the shader local matrix
-//            linearGradientMatrix.setTranslate(2 * gradientX, 0);
-//
-//            // this is required in order to invalidate the shader's position
-//            linearGradient.setLocalMatrix(linearGradientMatrix);
-
-            Log.e(">>>>>>>>", "simmer ondraw");
-
-
-        } else {
-            // we're not animating, remove the shader from the paint
-            paint.setShader(null);
-        }
-
-        super.onDraw(canvas);
-
     }
 }
