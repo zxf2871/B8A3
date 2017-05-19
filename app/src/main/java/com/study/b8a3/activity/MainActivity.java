@@ -13,14 +13,14 @@ import android.widget.Toast;
 import com.study.b8a3.R;
 import com.study.b8a3.main.ActivityController;
 import com.study.b8a3.main.BaseActivity;
-import com.study.b8a3.view.SimmerButton;
+import com.study.b8a3.view.ShimmerButton;
 
 public class MainActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();
 
     TextView mTextView;
     String mBackString;
-    SimmerButton mSimmerButton;
+    ShimmerButton mSimmerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
-        mSimmerButton = (SimmerButton) findViewById(R.id.btn_simmer_show);
+        mSimmerButton = (ShimmerButton) findViewById(R.id.btn_simmer_show);
 //        mSimmerButton.startSimmer();
     }
 
