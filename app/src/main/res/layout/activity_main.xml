@@ -55,10 +55,11 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:id="@+id/btn_simmer_show"
-            android:background="@color/blue_color"
+            android:background="@color/green_color"
             android:gravity="center"
             android:textColor="#ffffff"
             android:text="显示闪烁BUTTON实例"/>
+
     </LinearLayout>
 
 
