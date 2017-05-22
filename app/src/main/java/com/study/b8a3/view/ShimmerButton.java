@@ -22,12 +22,12 @@ import android.widget.Button;
  */
 
 public class ShimmerButton extends Button {
-
     public static final String TAG = ShimmerButton.class.getSimpleName();
     private static final int DEFAULT_REPEAT_COUNT = ValueAnimator.INFINITE;
-    private static final long DEFAULT_DURATION = 4000;
+    private static final long DEFAULT_DURATION = 2000;
     private static final long DEFAULT_START_DELAY = 0;
-    private static final int maskWith = 400;
+    private float maskWith;
+    private float maskWithReal;
 
     private ObjectAnimator animator;
     private int repeatCount;
@@ -67,8 +67,9 @@ public class ShimmerButton extends Button {
             @Override
             public void run() {
                 isShimmering = true;
-                float fromX = -maskWith;
-                float toX = ShimmerButton.this.getWidth();
+                float fromX = 0;
+                maskWith = ShimmerButton.this.getWidth() / 2;
+                float toX = ShimmerButton.this.getWidth() + maskWith+getHeight();
                 animator = ObjectAnimator.ofFloat(ShimmerButton.this, "gradientX", fromX, toX);
                 animator.setRepeatCount(repeatCount);
                 animator.setDuration(duration);
@@ -127,18 +128,19 @@ public class ShimmerButton extends Button {
         Shader mShader = new LinearGradient(gradientX, 0, gradientX + maskWith, getHeight(),
                 new int[]{
                         Color.argb(0, 255, 255, 255),
-                        Color.argb(255, 255, 255, 255),
-                        Color.argb(255, 255, 255, 255),
+                        Color.argb(175, 255, 255, 255),
+                        Color.argb(200, 255, 255, 255),
+                        Color.argb(175, 255, 255, 255),
                         Color.argb(0, 255, 255, 255)},
                 new float[]{
-                        0f,
-                        0.25f,
+                        0.15f,
+                        0.45f,
                         0.5f,
-                        0.75f,
-                        1,
-                }, Shader.TileMode.CLAMP); // 一个材质,打造出一个线性梯度沿著一条线。
+                        0.55f,
+                        0.85f,
+                }, Shader.TileMode.MIRROR); // 一个材质,打造出一个线性梯度沿著一条线。
         mPaint.setShader(mShader);
-        canvas.drawRect(gradientX, 0, gradientX + maskWith, getHeight(), mPaint);// 正方形
+        canvas.drawRect(gradientX - maskWith - getHeight(), 0 - maskWith/2, gradientX , getHeight()+maskWith/2, mPaint);// 正方形
 
     }
 

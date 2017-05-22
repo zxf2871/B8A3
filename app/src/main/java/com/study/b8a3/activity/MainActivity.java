@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
-        mSimmerButton = (ShimmerButton) findViewById(R.id.btn_simmer_show);
+//        mSimmerButton = (ShimmerButton) findViewById(R.id.btn_simmer_show);
 //        mSimmerButton.startSimmer();
     }
 
