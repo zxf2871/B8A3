@@ -58,7 +58,8 @@
             android:background="@color/green_color"
             android:gravity="center"
             android:textColor="#ffffff"
-            android:text="显示闪烁BUTTON实例"/>
+            android:text="显示闪烁BUTTON实例"
+            android:onClick="openShimmer"/>
 
     </LinearLayout>
 

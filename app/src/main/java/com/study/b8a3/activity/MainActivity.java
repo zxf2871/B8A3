@@ -127,4 +127,8 @@ public class MainActivity extends BaseActivity {
             mSimmerButton.cancel();
         }
     }
+
+    public void openShimmer(View view) {
+        ShimmerActivity.startShimmerActivity(this);
+    }
 }

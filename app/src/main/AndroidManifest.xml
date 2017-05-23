@@ -56,6 +56,7 @@
         <activity android:name=".activity.AnimationActivity"
             android:process="com.b8a3.another.process"></activity>
         <activity android:name=".activity.RecyclerViewActivity"></activity>
+        <activity android:name=".activity.ShimmerActivity"></activity>
     </application>
 
 </manifest>
