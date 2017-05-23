@@ -117,7 +117,7 @@ public class ShimmerButton extends Button {
 
     //需要被keep
     public void setGradientX(float gradientX) {
-        this.gradientX = maskWith + getHeight();
+        this.gradientX = gradientX;
         invalidate();
     }
 
