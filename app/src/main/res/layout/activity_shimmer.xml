@@ -12,6 +12,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="测试文字"/>
+        <com.study.b8a3.view.ShimmerLayout
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+
+            android:background="#33ff0000"
+            android:layout_weight="1"></com.study.b8a3.view.ShimmerLayout>
 
     </com.study.b8a3.view.ShimmerLayout>
 </LinearLayout>

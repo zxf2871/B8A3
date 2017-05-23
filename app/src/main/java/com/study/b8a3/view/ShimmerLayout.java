@@ -51,6 +51,12 @@ public class ShimmerLayout extends LinearLayout{
         duration = DEFAULT_DURATION;
         startDelay = DEFAULT_START_DELAY;
         mPaint = new Paint();
+        this.post(new Runnable() {
+            @Override
+            public void run() {
+                startSimmer();
+            }
+        });
     }
 
     public void startSimmer() {
@@ -144,6 +150,6 @@ public class ShimmerLayout extends LinearLayout{
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        startSimmer();
+//        startSimmer();
     }
 }
