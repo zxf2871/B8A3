@@ -3,7 +3,6 @@ package com.study.b8a3.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +13,7 @@ import com.study.b8a3.R;
 import com.study.b8a3.main.ActivityController;
 import com.study.b8a3.main.BaseActivity;
 import com.study.b8a3.view.ShimmerButton;
+import com.study.b8a3.weexdemo.WEEXMaintActivity;
 
 public class MainActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();
@@ -130,5 +130,9 @@ public class MainActivity extends BaseActivity {
 
     public void openShimmer(View view) {
         ShimmerActivity.startShimmerActivity(this);
+    }
+
+    public void btnOpenWeex(View view) {
+        WEEXMaintActivity.startWEEXMainActivity(this);
     }
 }

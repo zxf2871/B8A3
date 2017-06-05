@@ -57,6 +57,7 @@
             android:process="com.b8a3.another.process"></activity>
         <activity android:name=".activity.RecyclerViewActivity"></activity>
         <activity android:name=".activity.ShimmerActivity"></activity>
+        <activity android:name=".weexdemo.WEEXMaintActivity"></activity>
     </application>
 
 </manifest>

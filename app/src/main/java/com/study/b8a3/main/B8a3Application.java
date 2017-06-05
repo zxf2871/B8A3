@@ -5,6 +5,9 @@ import android.content.Context;
 import android.util.Log;
 
 import com.study.b8a3.common.CommonUtils;
+import com.study.b8a3.weexdemo.ImageAdapter;
+import com.taobao.weex.InitConfig;
+import com.taobao.weex.WXSDKEngine;
 
 /**
  * Created by B8A3 on 2017/4/8.
@@ -19,7 +22,8 @@ public class B8a3Application extends Application {
     public void onCreate() {
         super.onCreate();
         sContext = this;
-
+        InitConfig config=new InitConfig.Builder().setImgAdapter(new ImageAdapter()).build();
+        WXSDKEngine.initialize(this,config);
 //        String processName =
         Log.i(TAG, CommonUtils.getProcessName(this)+" "+android.os.Process.myPid());
     }
