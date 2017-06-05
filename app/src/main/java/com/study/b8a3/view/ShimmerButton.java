@@ -14,14 +14,11 @@ import android.util.AttributeSet;
 import android.widget.Button;
 
 /**
- * Created by Administrator on 2017/5/16.
- */
-
-/**
- * Created by Administrator on 2017/5/16.
+ * Created by xinfu.zhao on 2017/5/16.
  */
 
 public class ShimmerButton extends Button {
+
     public static final String TAG = ShimmerButton.class.getSimpleName();
     private static final int DEFAULT_REPEAT_COUNT = ValueAnimator.INFINITE;
     private static final long DEFAULT_DURATION = 1500;
@@ -35,6 +32,7 @@ public class ShimmerButton extends Button {
     private float gradientX;
     private boolean isShimmering;
     private Paint mPaint;
+    private float mEdge = 0.35f;//边界位置渲染开始的位置
 
     public ShimmerButton(Context context) {
         this(context, null);
@@ -48,7 +46,6 @@ public class ShimmerButton extends Button {
         super(context, attrs, defStyleAttr);
         init();
     }
-
     private void init() {
         repeatCount = DEFAULT_REPEAT_COUNT;
         duration = DEFAULT_DURATION;
@@ -62,47 +59,41 @@ public class ShimmerButton extends Button {
             return;
         }
 
-        final Runnable animate = new Runnable() {
+
+        isShimmering = true;
+        float fromX = 0;
+        maskWith = ShimmerButton.this.getWidth() / 2;
+        maskWith = (1 + (1 / (2 - 4 * mEdge))) * getHeight();
+        float toX = ShimmerButton.this.getWidth() + maskWith + getHeight();
+        animator = ObjectAnimator.ofFloat(ShimmerButton.this, "gradientX", fromX, toX);
+        animator.setRepeatCount(repeatCount);
+        animator.setDuration(duration);
+        animator.setStartDelay(startDelay);
+        animator.addListener(new Animator.AnimatorListener() {
             @Override
-            public void run() {
-                isShimmering = true;
-                float fromX = 0;
-                maskWith = ShimmerButton.this.getWidth() / 2;
-                float toX = ShimmerButton.this.getWidth() + maskWith + getHeight();
-                animator = ObjectAnimator.ofFloat(ShimmerButton.this, "gradientX", fromX, toX);
-                animator.setRepeatCount(repeatCount);
-                animator.setDuration(duration);
-                animator.setStartDelay(startDelay);
-                animator.addListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        isShimmering = false;
-                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                            ShimmerButton.this.postInvalidate();
-                        } else {
-                            ShimmerButton.this.postInvalidateOnAnimation();
-                        }
-                        animator = null;
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-                    }
-                });
-
-                animator.start();
+            public void onAnimationStart(Animator animation) {
             }
-        };
-        animate.run();
 
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                isShimmering = false;
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                    ShimmerButton.this.postInvalidate();
+                } else {
+                    ShimmerButton.this.postInvalidateOnAnimation();
+                }
+                animator = null;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+        animator.start();
     }
 
     public void cancel() {
@@ -121,6 +112,7 @@ public class ShimmerButton extends Button {
         invalidate();
     }
 
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -131,19 +123,31 @@ public class ShimmerButton extends Button {
                         Color.argb(200, 255, 255, 255),
                         Color.argb(0, 255, 255, 255)},
                 new float[]{
-                        0.35f,
+                        mEdge,
                         0.45f,
                         0.55f,
-                        0.65f,
+                        1 - mEdge,
                 }, Shader.TileMode.MIRROR); // 一个材质,打造出一个线性梯度沿著一条线。
         mPaint.setShader(mShader);
         canvas.drawRect(gradientX - maskWith - getHeight(), 0 - maskWith / 2, gradientX, getHeight() + maskWith / 2, mPaint);// 正方形
 
     }
 
+
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        startSimmer();
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        this.post(new Runnable() {
+            @Override
+            public void run() {
+                startSimmer();
+            }
+        });
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        cancel();
     }
 }

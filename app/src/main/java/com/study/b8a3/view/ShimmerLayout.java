@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
  * Created by Administrator on 2017/5/23.
  */
 
-public class ShimmerLayout extends LinearLayout{
+public class ShimmerLayout extends LinearLayout {
     public static final String TAG = ShimmerLayout.class.getSimpleName();
     private static final int DEFAULT_REPEAT_COUNT = ValueAnimator.INFINITE;
     private static final long DEFAULT_DURATION = 5000;
@@ -51,12 +51,6 @@ public class ShimmerLayout extends LinearLayout{
         duration = DEFAULT_DURATION;
         startDelay = DEFAULT_START_DELAY;
         mPaint = new Paint();
-        this.post(new Runnable() {
-            @Override
-            public void run() {
-                startSimmer();
-            }
-        });
     }
 
     public void startSimmer() {
@@ -65,48 +59,41 @@ public class ShimmerLayout extends LinearLayout{
             return;
         }
 
-        final Runnable animate = new Runnable() {
+
+        isShimmering = true;
+        float fromX = 0;
+        maskWith = ShimmerLayout.this.getWidth() / 2;
+        maskWith = (1 + (1 / (2 - 4 * age))) * getHeight();
+        float toX = ShimmerLayout.this.getWidth() + maskWith + getHeight();
+        animator = ObjectAnimator.ofFloat(ShimmerLayout.this, "gradientX", fromX, toX);
+        animator.setRepeatCount(repeatCount);
+        animator.setDuration(duration);
+        animator.setStartDelay(startDelay);
+        animator.addListener(new Animator.AnimatorListener() {
             @Override
-            public void run() {
-                isShimmering = true;
-                float fromX = 0;
-                maskWith = ShimmerLayout.this.getWidth() / 2;
-                maskWith = (1+(1/(2-4*age)))*getHeight();
-                float toX = ShimmerLayout.this.getWidth() + maskWith + getHeight();
-                animator = ObjectAnimator.ofFloat(ShimmerLayout.this, "gradientX", fromX, toX);
-                animator.setRepeatCount(repeatCount);
-                animator.setDuration(duration);
-                animator.setStartDelay(startDelay);
-                animator.addListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        isShimmering = false;
-                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                            ShimmerLayout.this.postInvalidate();
-                        } else {
-                            ShimmerLayout.this.postInvalidateOnAnimation();
-                        }
-                        animator = null;
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-                    }
-                });
-
-                animator.start();
+            public void onAnimationStart(Animator animation) {
             }
-        };
-        animate.run();
 
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                isShimmering = false;
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                    ShimmerLayout.this.postInvalidate();
+                } else {
+                    ShimmerLayout.this.postInvalidateOnAnimation();
+                }
+                animator = null;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+        animator.start();
     }
 
     public void cancel() {
@@ -126,7 +113,6 @@ public class ShimmerLayout extends LinearLayout{
     }
 
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -140,16 +126,28 @@ public class ShimmerLayout extends LinearLayout{
                         age,
                         0.45f,
                         0.55f,
-                        1-age,
+                        1 - age,
                 }, Shader.TileMode.MIRROR); // 一个材质,打造出一个线性梯度沿著一条线。
         mPaint.setShader(mShader);
         canvas.drawRect(gradientX - maskWith - getHeight(), 0 - maskWith / 2, gradientX, getHeight() + maskWith / 2, mPaint);// 正方形
 
     }
 
+
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-//        startSimmer();
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        this.post(new Runnable() {
+            @Override
+            public void run() {
+                startSimmer();
+            }
+        });
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        cancel();
     }
 }
