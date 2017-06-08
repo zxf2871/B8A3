@@ -39,7 +39,7 @@ public class WEEXMaintActivity extends BaseActivity implements IWXRenderListener
          * width 为-1 默认全屏，可以自己定制。
          * height =-1 默认全屏，可以自己定制。
          */
-        mWXSDKInstance.render("WXSample", WXFileUtils.loadAsset("hello.js", this), null, null, WXRenderStrategy.APPEND_ASYNC);
+        mWXSDKInstance.render("WXSample", WXFileUtils.loadAsset("app.weex.js", this), null, null, WXRenderStrategy.APPEND_ASYNC);
     }
     @Override
     public void onViewCreated(WXSDKInstance instance, View view) {
