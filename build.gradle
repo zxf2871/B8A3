@@ -1,11 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.kotlin_version = '1.1.2-4'
     repositories {
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,4 +22,155 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+//task
+//1 定义task
+//这里的"<<"表示向helloWorld中加入执行代
+task helloWorld << {
+    println "hello world!"
+}
+
+task hello1 << {
+    println 'hello1'
+}
+
+task hello2 {
+    doLast {
+        println 'hello2'
+    }
+}
+
+task hello3 {
+    doFirst {
+        println 'hello3'
+    }
+}
+
+//2 定义类型: 复制文件  从xml到destination
+
+task copyFile(type: Copy) {
+    from 'xml'
+    into 'destination'
+}
+
+//通过TaskContainer的create()方法创建Task
+//注意是tasks 加s
+tasks.create(name: 'hello4') << {
+    println 'hello4'
+}
+
+//3 生命依赖  两种方式:
+//第一种
+task hello5(dependsOn: hello4) << {
+    println 'hello5'
+}
+//第二种
+task hello6 << {
+    println 'hello6'
+}
+hello6.dependsOn hello5
+
+//我们可以在定义Task的时候对 Property 进行配置：  description, logger
+task hello7 << {
+    description = "this is hello7"
+    println description
+}
+
+task hello8(dependsOn: hello7) << {
+    println description
+}
+hello8.configure {
+    description = "1  this is hello8"
+}
+//我们还可以通过闭包的方式来配置一个已有的Task：
+hello8 {
+    description = "this is hello8"
+}
+
+//三种相同功能的设置
+task showDescription1 << {
+    description = 'this is task showDescription'
+    println description
+}
+
+task showDescription2 << {
+    println description
+}
+showDescription2.description = 'this is task showDescription'
+
+
+task showDescription3 << {
+    println description
+}
+
+showDescription3 {
+    description = 'this is task showDescription'
+}
+
+class GroovyBeanExample {
+    private String name;
+}
+
+task hello9 << {
+    def bean = new GroovyBeanExample()
+    bean.name = 'this is name'
+    println bean.name
+}
+
+
+class Child {
+    private String name
+}
+
+class Parent {
+    Child child = new Child()
+
+    void configChild(Closure c) {
+        c.delegate = child
+        c.setResolveStrategy Closure.DELEGATE_FIRST
+        c()
+    }
+}
+
+task hello10 << {
+    def parent = new Parent()
+    parent.configChild {
+        name = "child name"
+    }
+
+    println parent.child.name
+
+}
+
+
+//修改前
+task combineFileContentNonIncremental {
+    def sources = fileTree('sourceDir')
+    def destination = file('destination.txt')
+
+    doLast {
+        destination.withPrintWriter { writer ->
+            sources.each {source ->
+                writer.println source.text
+            }
+        }
+    }
+}
+
+//修改后
+task combineFileContentIncremental {
+    def sources = fileTree('sourceDir')
+    def destination = file('destination.txt')
+
+    inputs.dir sources
+    outputs.file destination
+
+    doLast {
+        destination.withPrintWriter { writer ->
+            sources.each {source ->
+                writer.println source.text
+            }
+        }
+    }
 }
