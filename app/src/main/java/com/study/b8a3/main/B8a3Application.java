@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.study.b8a3.common.CommonUtils;
+import com.study.b8a3.utils.GlobalHandler;
 import com.study.b8a3.weexdemo.ImageAdapter;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXSDKEngine;
@@ -16,6 +17,7 @@ import com.taobao.weex.WXSDKEngine;
 public class B8a3Application extends Application {
 
     private static String TAG = B8a3Application.class.getSimpleName();
+    private GlobalHandler mGlobalHandler;
 
     public static B8a3Application sContext;
     @Override
@@ -26,6 +28,10 @@ public class B8a3Application extends Application {
         WXSDKEngine.initialize(this,config);
 //        String processName =
         Log.i(TAG, CommonUtils.getProcessName(this)+" "+android.os.Process.myPid());
+        mGlobalHandler = new GlobalHandler();
+    }
+    public GlobalHandler getGlobalHandler() {
+        return mGlobalHandler;
     }
 
     public static Context getContext(){

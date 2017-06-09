@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">B8A3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="login">登录</string>
+    <string name="splash_start">启动</string>
+    <string name="user_erorr">用户名为空</string>
+    <string name="password_erorr">密码为空</string>
 </resources>

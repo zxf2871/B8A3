@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.study.b8a3.R;
+import com.study.b8a3.login.SplashActivity;
 import com.study.b8a3.main.ActivityController;
 import com.study.b8a3.main.BaseActivity;
 import com.study.b8a3.view.ShimmerButton;
@@ -134,5 +135,8 @@ public class MainActivity extends BaseActivity {
 
     public void btnOpenWeex(View view) {
         WEEXMaintActivity.startWEEXMainActivity(this);
+    }
+    public void btnOpenHome(View view) {
+        SplashActivity.startActivity(this);
     }
 }

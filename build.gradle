@@ -143,7 +143,6 @@ task hello10 << {
 
 }
 
-
 //修改前
 task combineFileContentNonIncremental {
     def sources = fileTree('sourceDir')
@@ -151,7 +150,7 @@ task combineFileContentNonIncremental {
 
     doLast {
         destination.withPrintWriter { writer ->
-            sources.each {source ->
+            sources.each { source ->
                 writer.println source.text
             }
         }
@@ -168,9 +167,44 @@ task combineFileContentIncremental {
 
     doLast {
         destination.withPrintWriter { writer ->
-            sources.each {source ->
+            sources.each { source ->
                 writer.println source.text
             }
         }
     }
 }
+
+//gradle常用的Poperty:
+//•project：Project本身
+//•name：Project的名字
+//•path：Project的绝对路径
+//•description：Project的描述信息
+//•buildDir：Project构建结果存放目录
+//•version：Project的版本号
+
+//设置并打印
+version = 'this is the project version'
+description = 'this is the project description'
+//两种定义方式
+ext.property1="this is property1"
+ext{
+    property2="this is property2"
+}
+
+task showProjectProperties << {
+    println version
+    println project.description
+    println description
+    //打印description时使用了project因为task和project都有这个属性
+    println property1
+    println property2
+}
+
+//通过命令行参数定义Property
+task showCommandLineProperties <<{
+    println property3
+}
+
+//命令行输入: gradle -P property3="this is property3" showCommandLineProperties
+//命令行输入 -D的参数需要加org.gradle.project.: gradle -D org.gradle.project.property3="this is property3" showCommandLineProperties
+
