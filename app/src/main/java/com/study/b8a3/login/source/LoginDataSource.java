@@ -24,12 +24,14 @@ public interface LoginDataSource {
 
     interface LoginCallback {
 
-        void onLoginSuccess(String token);
+        void onLoginSuccess(String token, String userString);
 
         void onLoginError(int code, String message);
     }
 
     void login(@NonNull String userName, String password, LoginCallback callback);
 
-    void saveLogin(@NonNull String token);
+    void saveLogin(@NonNull String token, String userString);
+
+    User getUser();
 }

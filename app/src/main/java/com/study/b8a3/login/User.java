@@ -1,25 +1,32 @@
 package com.study.b8a3.login;
 
+import android.text.TextUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Administrator on 2017/3/1.
  */
 
 public class User {
+    private int id;
     private String userName;
     private String password;
     private String name;
     private String img;
     private String token;
     private List<String> authorities;
-
-    public User(String userString){
-        this.userName = "";
-
-
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getUserName() {
         return userName;
     }
@@ -71,6 +78,26 @@ public class User {
     @Override
     public String toString() {
         return "";
+    }
+
+    public static User paseToUser(String userString) {
+
+        User user = null;
+        if (!TextUtils.isEmpty(userString)) {
+            user = new User();
+            try {
+                JSONObject jsonObject = new JSONObject(userString);
+                user.setId(jsonObject.optInt("id"));
+                user.setName(jsonObject.optString("name"));
+                user.setImg(jsonObject.optString("image"));
+                user.setToken(jsonObject.optString("token"));
+                user.setUserName(jsonObject.optString("username"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return user;
     }
 
 }

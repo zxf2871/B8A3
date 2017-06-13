@@ -17,8 +17,11 @@
 package com.study.b8a3.login.source;
 
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import com.study.b8a3.login.User;
+
+import javax.security.auth.callback.Callback;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -34,11 +37,7 @@ public class LoginRepository implements LoginDataSource {
     private static LoginRepository INSTANCE = null;
 
     private final LoginDataSource mUsersRemoteDataSource;
-
-    /**
-     * This variable has package local visibility so it can be accessed from tests.
-     */
-    User mCachedUser;
+    private final LoginDataSource mUsersLocalDataSource;
 
     /**
      * Marks the cache as invalid, to force an update the next time data is requested. This variable
@@ -47,8 +46,9 @@ public class LoginRepository implements LoginDataSource {
     boolean mCacheIsDirty = false;
 
     // Prevent direct instantiation.
-    private LoginRepository(@NonNull LoginDataSource tasksRemoteDataSource) {
+    private LoginRepository(@NonNull LoginDataSource tasksRemoteDataSource, LoginDataSource tasksLocalDataSource) {
         mUsersRemoteDataSource = checkNotNull(tasksRemoteDataSource);
+        mUsersLocalDataSource = checkNotNull(tasksLocalDataSource);
     }
 
     /**
@@ -57,15 +57,15 @@ public class LoginRepository implements LoginDataSource {
      * @param tasksRemoteDataSource the backend data source
      * @return the {@link LoginRepository} instance
      */
-    public static LoginRepository getInstance(LoginDataSource tasksRemoteDataSource) {
+    public static LoginRepository getInstance(LoginDataSource tasksRemoteDataSource, LoginDataSource tasksLocalDataSource) {
         if (INSTANCE == null) {
-            INSTANCE = new LoginRepository(tasksRemoteDataSource);
+            INSTANCE = new LoginRepository(tasksRemoteDataSource, tasksLocalDataSource);
         }
         return INSTANCE;
     }
 
     /**
-     * Used to force {@link #getInstance(LoginDataSource)} to create a new instance
+     * Used to force {@link #getInstance(LoginDataSource, LoginDataSource)} to create a new instance
      * next time it's called.
      */
     public static void destroyInstance() {
@@ -87,20 +87,38 @@ public class LoginRepository implements LoginDataSource {
         checkNotNull(password);
         checkNotNull(callback);
 
-        User cachedUser = mCachedUser;
+        if(TextUtils.isEmpty(userName) && TextUtils.isEmpty(password)){
+            mUsersLocalDataSource.login(userName, password, callback);
+        }else {
 
-        // Respond immediately with cache if available
-        if (cachedUser != null) {
-            callback.onLoginSuccess(cachedUser.getToken());
-            return;
+            LoginCallback loginCallback = new LoginCallback() {
+                @Override
+                public void onLoginSuccess(String token, String userString) {
+                    mUsersLocalDataSource.saveLogin(token, userString);
+                    callback.onLoginSuccess(token, userString);
+                }
+
+                @Override
+                public void onLoginError(int code, String message) {
+                    callback.onLoginError(code, message);
+                }
+            };
+            mUsersRemoteDataSource.login(userName, password, loginCallback);
         }
-
-        mUsersRemoteDataSource.login(userName, password, callback);
 
     }
 
     @Override
-    public void saveLogin(@NonNull String token) {
-        mUsersRemoteDataSource.saveLogin(token);
+    public void saveLogin(@NonNull String token, String userString) {
+        mUsersLocalDataSource.saveLogin(token, userString);
+    }
+
+    @Override
+    public User getUser() {
+        User user = mUsersLocalDataSource.getUser();
+        if(user == null){
+            user = mUsersRemoteDataSource.getUser();
+        }
+        return user;
     }
 }

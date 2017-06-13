@@ -6,6 +6,7 @@ package com.study.b8a3.network;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.study.b8a3.common.ErrorCode;
 import com.study.b8a3.thread.UpdateHandler;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ public abstract class NetworkUpdateHandler extends UpdateHandler {
     private List<NameValuePair> mParams = null;
     private String mResponse;
     private String url;
-    private int code = ErrorCode.NO_ERROR;
+    private int code = ErrorCode.SUCCESS;
     private String errorMessage = "";
 
     public NetworkUpdateHandler(Context context, String url, Map<String, String> params) {
@@ -74,16 +75,25 @@ public abstract class NetworkUpdateHandler extends UpdateHandler {
             code = ErrorCode.ERROR_NO_RESPONSE;
             return false;
         }
-        if (!analyseResponse(mResponse)) {
-            code = ErrorCode.ERROR_FORMAT;
-            return false;
-        } else {
-            return true;
+
+        int analyseCode = analyseResponse(mResponse);
+        switch (analyseCode) {
+            case ErrorCode.ERROR_FORMAT:
+                code = ErrorCode.ERROR_FORMAT;
+                return false;
+            case ErrorCode.SUCCESS:
+                return true;
+            default:
+                code = analyseCode;
+                return false;
         }
+
     }
 
-    protected abstract boolean analyseResponse(String response);
+    protected abstract int analyseResponse(String response);
+
     protected abstract boolean success(String response);
+
     protected abstract boolean fail(int code);
 
     @Override

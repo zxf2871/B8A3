@@ -35,6 +35,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
         setContentView(R.layout.login);
         LoginPresenter presenter = new LoginPresenter(this, Injection.provideTasksRepository(getApplicationContext()));
         this.setPresenter(presenter);
+        findViewById(R.id.bt_login).setOnClickListener(this);
     }
 
     @Override

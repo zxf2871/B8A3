@@ -29,7 +29,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void login(String userName, String password) {
         mRepository.login(userName, password, new LoginDataSource.LoginCallback() {
             @Override
-            public void onLoginSuccess(String token) {
+            public void onLoginSuccess(String token, String userContent) {
                 mView.loginSuccess();
             }
 
