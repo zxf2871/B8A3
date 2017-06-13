@@ -19,6 +19,7 @@ public abstract class NetworkUpdateHandler extends UpdateHandler {
     private String mResponse;
     private String url;
     private int code = ErrorCode.NO_ERROR;
+    private String errorMessage = "";
 
     public NetworkUpdateHandler(Context context, String url, Map<String, String> params) {
         super(context);
