@@ -34,9 +34,14 @@ public class LoginPresenter implements LoginContract.Presenter {
             }
 
             @Override
-            public void onLoginError(String massage) {
+            public void onLoginError(int code, String massage) {
                 mView.loginError(massage);
             }
         });
+    }
+
+    @Override
+    public void loginOut(){
+
     }
 }

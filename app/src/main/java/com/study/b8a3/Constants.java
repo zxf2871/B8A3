@@ -6,7 +6,7 @@ package com.study.b8a3;
 
 public class Constants {
     //url
-    public static final String BASE_URL = "https://47.94.167.6:8443/"; //test
+    public static final String BASE_URL = "https://47.94.167.6:8443/b8a3/"; //test
     public static final String LOGIN_URL = BASE_URL + "api/v1/userLogin"; //test
 
 

@@ -26,7 +26,7 @@ public interface LoginDataSource {
 
         void onLoginSuccess(String token);
 
-        void onLoginError(String message);
+        void onLoginError(int code, String message);
     }
 
     void login(@NonNull String userName, String password, LoginCallback callback);
