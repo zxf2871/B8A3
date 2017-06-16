@@ -102,10 +102,21 @@ public class LoginRepository implements LoginDataSource {
                 public void onLoginError(int code, String message) {
                     callback.onLoginError(code, message);
                 }
+
+                @Override
+                public void onLoginOutSuccess() {
+                    callback.onLoginOutSuccess();
+
+                }
             };
             mUsersRemoteDataSource.login(userName, password, loginCallback);
         }
 
+    }
+
+    @Override
+    public void loginOut(LoginCallback callback) {
+        mUsersLocalDataSource.loginOut(callback);
     }
 
     @Override

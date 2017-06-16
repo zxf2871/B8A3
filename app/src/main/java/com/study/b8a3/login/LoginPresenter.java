@@ -37,11 +37,29 @@ public class LoginPresenter implements LoginContract.Presenter {
             public void onLoginError(int code, String massage) {
                 mView.loginError(massage);
             }
+
+            @Override
+            public void onLoginOutSuccess() {
+
+            }
         });
     }
 
     @Override
     public void loginOut(){
+        mRepository.loginOut(new LoginDataSource.LoginCallback() {
+            @Override
+            public void onLoginSuccess(String token, String userContent) {
+            }
 
+            @Override
+            public void onLoginError(int code, String massage) {
+            }
+
+            @Override
+            public void onLoginOutSuccess() {
+                mView.loginOutSuccess();
+            }
+        });
     }
 }

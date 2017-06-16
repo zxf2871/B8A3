@@ -61,6 +61,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     }
 
     @Override
+    public void loginOutSuccess() {
+
+    }
+
+    @Override
     public void onClick(View v) {
         if(v.getId() == R.id.bt_login){
             String userName = ((EditText) findViewById(R.id.et_username)).getText().toString();

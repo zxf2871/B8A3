@@ -15,10 +15,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.study.b8a3.R;
+import com.study.b8a3.login.LoginContract;
+import com.study.b8a3.login.LoginPresenter;
 import com.study.b8a3.main.BaseActivity;
+import com.study.b8a3.utils.Injection;
 
 public class HomeActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, LoginContract.View {
+
+    private LoginContract.Presenter mLoginPresenter;
 
     public static void startActivity(Context context){
         Intent intent = new Intent(context, HomeActivity.class);
@@ -49,6 +54,9 @@ public class HomeActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        LoginPresenter presenter = new LoginPresenter(this, Injection.provideTasksRepository(getApplicationContext()));
+        this.setPresenter(presenter);
     }
 
     @Override
@@ -100,11 +108,30 @@ public class HomeActivity extends BaseActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-
+            mLoginPresenter.loginOut();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void setPresenter(LoginContract.Presenter presenter) {
+        this.mLoginPresenter = presenter;
+    }
+
+    @Override
+    public void loginSuccess() {
+    }
+
+    @Override
+    public void loginError(String message) {
+
+    }
+
+    @Override
+    public void loginOutSuccess() {
+        this.finish();
     }
 }

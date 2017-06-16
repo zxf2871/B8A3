@@ -11,6 +11,7 @@ public interface LoginContract {
     interface View extends BaseView<Presenter> {
         void loginSuccess();
         void loginError(String message);
+        void loginOutSuccess();
     }
 
     interface Presenter extends BasePresenter {

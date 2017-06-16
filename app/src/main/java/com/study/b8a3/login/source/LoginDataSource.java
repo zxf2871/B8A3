@@ -27,9 +27,13 @@ public interface LoginDataSource {
         void onLoginSuccess(String token, String userString);
 
         void onLoginError(int code, String message);
+
+        void onLoginOutSuccess();
     }
 
     void login(@NonNull String userName, String password, LoginCallback callback);
+
+    void loginOut(LoginCallback callback);
 
     void saveLogin(@NonNull String token, String userString);
 

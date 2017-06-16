@@ -59,6 +59,13 @@ public class LoginLocalDataSource implements LoginDataSource {
     }
 
     @Override
+    public void loginOut(LoginCallback callback) {
+        SharedPreferencesUtils.put(Constants.TOKEN, "");
+        SharedPreferencesUtils.put(Constants.LOGIN_USER, "");
+        callback.onLoginOutSuccess();
+    }
+
+    @Override
     public void saveLogin(@NonNull String token, String userString) {
         SharedPreferencesUtils.put(Constants.TOKEN, token);
         SharedPreferencesUtils.put(Constants.LOGIN_USER, userString);

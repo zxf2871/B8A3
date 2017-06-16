@@ -89,6 +89,11 @@ public class LoginRemoteDataSource implements LoginDataSource {
     }
 
     @Override
+    public void loginOut(LoginCallback callback) {
+
+    }
+
+    @Override
     public void saveLogin(@NonNull String token, String userString) {
 
     }

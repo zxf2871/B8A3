@@ -41,4 +41,9 @@ public class SplashActivity extends BaseActivity implements LoginContract.View{
         LoginActivity.startActivity(this);
         finish();
     }
+
+    @Override
+    public void loginOutSuccess() {
+
+    }
 }
