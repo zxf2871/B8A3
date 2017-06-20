@@ -12,10 +12,10 @@ cmake_minimum_required(VERSION 3.4.1)
 
 add_library( JNIEncrypt
              SHARED
-             src/main/jni/aes.c
-             src/main/jni/checksignature.c
-             src/main/jni/JNIEncrypt.c
-             src/main/jni/base64.c )
+             src/main/cpp/aes.c
+             src/main/cpp/checksignature.c
+             src/main/cpp/JNIEncrypt.c
+             src/main/cpp/base64.c )
 
 find_library( log-lib
               log )
