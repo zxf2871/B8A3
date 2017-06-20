@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.aesjni.AESEncrypt;
 import com.study.b8a3.R;
 import com.study.b8a3.login.LoginContract;
 import com.study.b8a3.login.LoginPresenter;
@@ -57,6 +60,8 @@ public class HomeActivity extends BaseActivity
 
         LoginPresenter presenter = new LoginPresenter(this, Injection.provideTasksRepository(getApplicationContext()));
         this.setPresenter(presenter);
+        Log.e(TAG, AESEncrypt.encode(HomeActivity.this, "abcdefghijklmnopqrstuvwxyz"));
+        Log.e(TAG, AESEncrypt.decode(HomeActivity.this, "qkrxxA9fIF636aITDRJhcg=="));
     }
 
     @Override
