@@ -6,13 +6,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_margin"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:gravity="center_horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="主要Activity"/>
         <TextView
@@ -27,7 +27,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="打开百度网页" />
-
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
         <Button
             android:id="@+id/btn_open_layout"
             android:layout_width="wrap_content"
@@ -50,8 +56,11 @@
             android:onClick="openRecycleViewActivity"
             android:text="打开RecycleView"
             />
+
+    </LinearLayout>
+
         <com.study.b8a3.view.ShimmerButton
-            android:layout_marginTop="20dp"
+            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:id="@+id/btn_simmer_show"
@@ -60,6 +69,12 @@
             android:textColor="#ffffff"
             android:text="显示闪烁BUTTON实例"
             android:onClick="openShimmer"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
         <Button
             android:id="@+id/btn_open_weex"
             android:layout_width="wrap_content"
@@ -72,6 +87,13 @@
             android:layout_height="wrap_content"
             android:onClick="btnOpenHome"
             android:text="打开主页. 开始密码登录等" />
+
+        <Button
+            android:id="@+id/btn_open_touch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnOpenTouchActivity"
+            android:text="打开touch分发学习页" />
 
     </LinearLayout>
 

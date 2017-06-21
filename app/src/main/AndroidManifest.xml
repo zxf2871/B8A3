@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.study.b8a3">
+
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -43,7 +44,9 @@
         <activity android:name=".activity.ThirdActivity">
             <intent-filter tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="http" />
             </intent-filter>
         </activity>
@@ -53,33 +56,34 @@
         <activity
             android:name=".activity.SingleInstanceActivity"
             android:launchMode="singleInstance" />
-        <activity android:name=".FloatingWindowActivity"></activity>
-        <activity android:name=".activity.LayoutActivity"
-            android:process=":another"></activity>
-        <activity android:name=".activity.AnimationActivity"
-            android:process="com.b8a3.another.process"></activity>
-        <activity android:name=".activity.RecyclerViewActivity"></activity>
-        <activity android:name=".activity.ShimmerActivity"></activity>
-        <activity android:name=".weexdemo.WEEXMaintActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-
+        <activity android:name=".FloatingWindowActivity" />
+        <activity
+            android:name=".activity.LayoutActivity"
+            android:process=":another" />
+        <activity
+            android:name=".activity.AnimationActivity"
+            android:process="com.b8a3.another.process" />
+        <activity android:name=".activity.RecyclerViewActivity" />
+        <activity android:name=".activity.ShimmerActivity" />
+        <activity
+            android:name=".weexdemo.WEEXMaintActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.HomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
             android:launchMode="singleTask"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
             android:launchMode="singleTask"
-            />        <activity
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".login.SplashActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
             android:launchMode="singleTask"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".touchstudy.TouchActivity"></activity>
     </application>
 
 </manifest>

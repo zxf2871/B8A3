@@ -13,6 +13,7 @@ import com.study.b8a3.R;
 import com.study.b8a3.login.SplashActivity;
 import com.study.b8a3.main.ActivityController;
 import com.study.b8a3.main.BaseActivity;
+import com.study.b8a3.touchstudy.TouchActivity;
 import com.study.b8a3.view.ShimmerButton;
 import com.study.b8a3.weexdemo.WEEXMaintActivity;
 
@@ -138,5 +139,9 @@ public class MainActivity extends BaseActivity {
     }
     public void btnOpenHome(View view) {
         SplashActivity.startActivity(this);
+    }
+
+    public void btnOpenTouchActivity(View view) {
+        TouchActivity.Factory.startTouchActivity(this);
     }
 }
