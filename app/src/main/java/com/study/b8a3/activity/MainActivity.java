@@ -142,6 +142,6 @@ public class MainActivity extends BaseActivity {
     }
 
     public void btnOpenTouchActivity(View view) {
-        TouchActivity.Factory.startTouchActivity(this);
+        TouchActivity.startTouchActivity(this);
     }
 }
