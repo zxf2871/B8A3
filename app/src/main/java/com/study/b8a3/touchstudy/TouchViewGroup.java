@@ -31,8 +31,10 @@ public class TouchViewGroup extends LinearLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        Log.e("touch==========", ": dispatchTouchEvent ");
-        return super.dispatchTouchEvent(event);
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+            Log.e("touch==========", ": dispatchTouchEvent ");
+        }
+      return super.dispatchTouchEvent(event);
 //        return true;
 //        return false;
     }
@@ -52,8 +54,8 @@ public class TouchViewGroup extends LinearLayout {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
             Log.e("touch==========", ": onTouchEvent ");
         }
-//        return super.onTouchEvent(event);
-        return true;
+        return super.onTouchEvent(event);
+//        return true;
 //        return false;
     }
 

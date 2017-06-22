@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -15,15 +16,24 @@ public class TouchView extends android.support.v7.widget.AppCompatTextView {
     public static String TAG = TextView.class.getSimpleName();
 
     public TouchView(Context context) {
-        super(context, null);
+        this(context, null);
     }
 
     public TouchView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public TouchView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    Log.e("touch≡≡≡≡≡", ": onTouch ");
+                }
+                return false;
+            }
+        });
     }
 
 
@@ -32,9 +42,9 @@ public class TouchView extends android.support.v7.widget.AppCompatTextView {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
             Log.e("touch≡≡≡≡≡", ": dispatchTouchEvent ");
         }
-//        return super.dispatchTouchEvent(event);
+        return super.dispatchTouchEvent(event);
 //        return true;
-        return false;
+//        return false;
     }
 
     @Override
@@ -43,8 +53,10 @@ public class TouchView extends android.support.v7.widget.AppCompatTextView {
         if(event.getAction() == MotionEvent.ACTION_DOWN){
             Log.e("touch≡≡≡≡≡", ": onTouchEvent ");
         }
-//        return super.onTouchEvent(event);
-        //        return true;
-        return false;
+        return super.onTouchEvent(event);
+//                return true;
+//        return false;
     }
+
+
 }
