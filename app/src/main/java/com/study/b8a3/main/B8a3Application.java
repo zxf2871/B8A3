@@ -25,7 +25,7 @@ public class B8a3Application extends Application {
         super.onCreate();
         sContext = this;
         InitConfig config=new InitConfig.Builder().setImgAdapter(new ImageAdapter()).build();
-        WXSDKEngine.initialize(this,config);
+//        WXSDKEngine.initialize(this,config);
 //        String processName =
         Log.i(TAG, CommonUtils.getProcessName(this)+" "+android.os.Process.myPid());
         mGlobalHandler = new GlobalHandler();

@@ -86,14 +86,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="btnOpenHome"
-            android:text="打开主页. 开始密码登录等" />
+            android:text="主页~登录" />
 
         <Button
             android:id="@+id/btn_open_touch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="btnOpenTouchActivity"
-            android:text="打开touch分发学习页" />
+            android:text="touch分发学习页" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/btn_open_provideractivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnOpenProviderActivity"
+            android:text="ContentProvider" />
+
 
     </LinearLayout>
 

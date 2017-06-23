@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.study.b8a3.R;
+import com.study.b8a3.provider.ProviderActivity;
 import com.study.b8a3.login.SplashActivity;
 import com.study.b8a3.main.ActivityController;
 import com.study.b8a3.main.BaseActivity;
@@ -143,5 +144,9 @@ public class MainActivity extends BaseActivity {
 
     public void btnOpenTouchActivity(View view) {
         TouchActivity.startTouchActivity(this);
+    }
+
+    public void btnOpenProviderActivity(View view) {
+        ProviderActivity.startProviderActivity(MainActivity.this);
     }
 }

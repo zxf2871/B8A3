@@ -91,9 +91,12 @@
         <activity android:name=".touchstudy.TouchActivity" />
 
         <provider
-            android:name=".contentprovider.B8a3Provider"
-            android:authorities="com.study.b8a3.contentprovider.b8a3provider" />
+            android:name=".provider.B8a3Provider"
+            android:authorities="com.study.b8a3.provider.b8a3provider" />
 
+        <activity
+            android:name=".provider.ProviderActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

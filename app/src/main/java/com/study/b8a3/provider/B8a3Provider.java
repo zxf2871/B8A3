@@ -1,4 +1,4 @@
-package com.study.b8a3.contentprovider;
+package com.study.b8a3.provider;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -26,28 +26,39 @@ public class B8a3Provider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+        Log.e(TAG, "query");
+
         return null;
     }
 
     @Nullable
     @Override
     public String getType(@NonNull Uri uri) {
-        return null;
+        Log.e(TAG, "getType");
+        return "this is provider type!";
     }
 
     @Nullable
     @Override
-    public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+    public synchronized Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+        Log.e(TAG, "insert");
+        Log.e(TAG, "insert" + values.toString());
+
         return null;
     }
 
     @Override
-    public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+    public synchronized int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+        Log.e(TAG, "delete");
+        Log.e(TAG, "delete selection : " + selection + " selectionArgs : " + selectionArgs);
         return 0;
     }
 
     @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
+    public synchronized int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
+        Log.e(TAG, "update");
+        Log.e(TAG, "update  selection : " + selection + " selectionArgs : " + selectionArgs);
+
         return 0;
     }
 }

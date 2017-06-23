@@ -31,7 +31,7 @@ public class TouchView extends android.support.v7.widget.AppCompatTextView {
                 if(event.getAction() == MotionEvent.ACTION_DOWN) {
                     Log.e("touch≡≡≡≡≡", ": onTouch ");
                 }
-                return false;
+                return true;
             }
         });
     }
