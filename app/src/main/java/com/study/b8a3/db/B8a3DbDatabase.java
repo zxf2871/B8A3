@@ -12,7 +12,7 @@ public class B8a3DbDatabase extends SQLiteOpenHelper {
 
     private static B8a3DbDatabase sInstance;
     public static String DATABASE_NAME = "b8a3_test";
-    public static int VESRION_CODE = 1;
+    public static int VERSION_CODE = 1;
 
 
     public B8a3DbDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -22,7 +22,7 @@ public class B8a3DbDatabase extends SQLiteOpenHelper {
 
     public static B8a3DbDatabase getsInstance(Context context) {
         if (sInstance == null) {
-            sInstance = new B8a3DbDatabase(context, DATABASE_NAME, null, VESRION_CODE);
+            sInstance = new B8a3DbDatabase(context, DATABASE_NAME, null, VERSION_CODE);
         }
         return sInstance;
     }

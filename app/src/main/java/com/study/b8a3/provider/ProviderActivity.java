@@ -24,7 +24,7 @@ public class ProviderActivity extends AppCompatActivity {
         buttonTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uriString = "content://com.study.b8a3.contentprovider.b8a3provider";
+                String uriString = "content://com.study.b8a3.provider.b8a3provider";
                 Uri uri = Uri.parse(uriString);
                 Cursor cursor = getContentResolver().query(uri, null, null, null, null);
                 String providerType = getContentResolver().getType(uri);
