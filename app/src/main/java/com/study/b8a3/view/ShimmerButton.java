@@ -62,7 +62,6 @@ public class ShimmerButton extends Button {
 
         isShimmering = true;
         float fromX = 0;
-        maskWith = ShimmerButton.this.getWidth() / 2;
         maskWith = (1 + (1 / (2 - 4 * mEdge))) * getHeight();
         float toX = ShimmerButton.this.getWidth() + maskWith + getHeight();
         animator = ObjectAnimator.ofFloat(ShimmerButton.this, "gradientX", fromX, toX);

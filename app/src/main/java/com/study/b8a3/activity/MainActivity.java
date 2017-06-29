@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.study.b8a3.R;
+import com.study.b8a3.animation.AnimationActivity;
 import com.study.b8a3.provider.ProviderActivity;
 import com.study.b8a3.login.SplashActivity;
 import com.study.b8a3.main.ActivityController;

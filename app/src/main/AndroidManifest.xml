@@ -66,7 +66,7 @@
             android:name=".activity.LayoutActivity"
             android:process=":another" />
         <activity
-            android:name=".activity.AnimationActivity"
+            android:name=".animation.AnimationActivity"
             android:process="com.b8a3.another.process" />
         <activity android:name=".activity.RecyclerViewActivity" />
         <activity android:name=".activity.ShimmerActivity" />
@@ -96,7 +96,10 @@
 
         <activity
             android:name=".provider.ProviderActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".animation.property.PropertyActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
