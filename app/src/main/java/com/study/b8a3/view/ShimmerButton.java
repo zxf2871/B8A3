@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Shader;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -32,7 +33,10 @@ public class ShimmerButton extends Button {
     private float gradientX;
     private boolean isShimmering;
     private Paint mPaint;
+    private Paint mAgePaint;
+    private float mMaxX;
     private float mEdge = 0.35f;//边界位置渲染开始的位置
+    private float mLineLength = 0f;
 
     public ShimmerButton(Context context) {
         this(context, null);
@@ -46,11 +50,13 @@ public class ShimmerButton extends Button {
         super(context, attrs, defStyleAttr);
         init();
     }
+
     private void init() {
         repeatCount = DEFAULT_REPEAT_COUNT;
         duration = DEFAULT_DURATION;
         startDelay = DEFAULT_START_DELAY;
         mPaint = new Paint();
+        mAgePaint = new Paint();
     }
 
     public void startSimmer() {
@@ -64,6 +70,7 @@ public class ShimmerButton extends Button {
         float fromX = 0;
         maskWith = (1 + (1 / (2 - 4 * mEdge))) * getHeight();
         float toX = ShimmerButton.this.getWidth() + maskWith + getHeight();
+        mMaxX = toX;
         animator = ObjectAnimator.ofFloat(ShimmerButton.this, "gradientX", fromX, toX);
         animator.setRepeatCount(repeatCount);
         animator.setDuration(duration);
@@ -115,6 +122,7 @@ public class ShimmerButton extends Button {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        mLineLength = getHeight() * 0.3f;
         Shader mShader = new LinearGradient(gradientX - maskWith - getHeight(), 0 - maskWith / 2, gradientX, getHeight() + maskWith / 2,
                 new int[]{
                         Color.argb(0, 255, 255, 255),
@@ -130,6 +138,17 @@ public class ShimmerButton extends Button {
         mPaint.setShader(mShader);
         canvas.drawRect(gradientX - maskWith - getHeight(), 0 - maskWith / 2, gradientX, getHeight() + maskWith / 2, mPaint);// 正方形
 
+        mAgePaint.setColor(Color.RED);
+        mAgePaint.setStrokeWidth(getHeight() / 10);
+
+        float p = gradientX / mMaxX;
+
+        canvas.drawLine(getWidth() * p - mLineLength, 0, getWidth() * p, 0, mAgePaint);
+
+
+        canvas.drawLine(getWidth(), getHeight() * p - mLineLength, getWidth(), getHeight() * p, mAgePaint);
+        canvas.drawLine(getWidth(), getHeight(), getWidth() * (1 - p), getHeight(), mAgePaint);
+        canvas.drawLine(0, getHeight(), 0, getHeight() * (1 - p), mAgePaint);
     }
 
 
