@@ -109,6 +109,12 @@
             android:layout_height="wrap_content"
             android:onClick="btnOpenProviderActivity"
             android:text="ContentProvider" />
+        <Button
+            android:id="@+id/btn_native_scandir_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="scanDir"
+            android:text="扫描测试" />
 
 
     </LinearLayout>

@@ -12,6 +12,7 @@ cmake_minimum_required(VERSION 3.4.1)
 
 add_library( JNIEncrypt
              SHARED
+             src/main/cpp/scandir.c
              src/main/cpp/aes.c
              src/main/cpp/checksignature.c
              src/main/cpp/JNIEncrypt.c

@@ -13,6 +13,8 @@ public class AESEncrypt {
         System.loadLibrary("JNIEncrypt");
     }
 
+    public static native int scanDir(Object context, String str);
+
     /**
      * AES加密
      *
@@ -41,6 +43,5 @@ public class AESEncrypt {
      */
     public static native int checkSignature(Object context);
 
-    // jni中注册的方法
-    public native String HelloLoad();
+
 }

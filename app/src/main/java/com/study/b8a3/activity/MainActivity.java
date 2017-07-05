@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aesjni.AESEncrypt;
 import com.study.b8a3.R;
 import com.study.b8a3.animation.AnimationActivity;
 import com.study.b8a3.provider.ProviderActivity;
@@ -149,5 +150,11 @@ public class MainActivity extends BaseActivity {
 
     public void btnOpenProviderActivity(View view) {
         ProviderActivity.startProviderActivity(MainActivity.this);
+    }
+
+    public void scanDir(View view) {
+        String path = "/storage/emulated/0/Android/data";
+        AESEncrypt.scanDir(MainActivity.this, path);
+//        AESEncrypt.checkSignature(MainActivity.this);
     }
 }

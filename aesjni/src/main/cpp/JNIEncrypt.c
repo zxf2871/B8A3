@@ -1,8 +1,8 @@
 #include <jni.h>
 #include "aes.h"
+#include "scandir.h"
 #include "checksignature.h"
 #include <string.h>
-#include "checksignature.h"
 #include <android/log.h>
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
@@ -37,7 +37,7 @@ JNIEXPORT jstring JNICALL encode(JNIEnv *env, jobject instance, jobject context,
 }
 
 __attribute__((section (".mytext")))
-JNIEXPORT jstring JNICALL  decode(JNIEnv *env, jobject instance, jobject context, jstring str_) {
+JNIEXPORT jstring JNICALL decode(JNIEnv *env, jobject instance, jobject context, jstring str_) {
 
 
 //    //先进行apk被 二次打包的校验
@@ -80,18 +80,23 @@ check(JNIEnv *env, jobject instance, jobject con) {
     return checkSignature(env, instance, con);
 }
 
+JNIEXPORT jint JNICALL _scan(JNIEnv *env, jobject instance, jobject context, jstring str_) {
+    scan_dir(env, str_);
+    return 1;
+}
+
 
 // Java和JNI函数的绑定表
 static JNINativeMethod method_table[] = {
-        { "checkSignature", "(Ljava/lang/Object;)I", (void*)check },
-        { "decode", "(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;", (void*)decode },
-        { "encode", "(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;", (void*)encode },
+        {"checkSignature", "(Ljava/lang/Object;)I",                                    (void *) check},
+        {"decode",         "(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;", (void *) decode},
+        {"encode",         "(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;", (void *) encode},
+        {"scanDir",        "(Ljava/lang/Object;Ljava/lang/String;)I",                  (void *) _scan},
 };
 
 // 注册native方法到java中
-static int registerNativeMethods(JNIEnv* env, const char* className,
-                                 JNINativeMethod* gMethods, int numMethods)
-{
+static int registerNativeMethods(JNIEnv *env, const char *className,
+                                 JNINativeMethod *gMethods, int numMethods) {
     jclass clazz;
     clazz = (*env)->FindClass(env, className);
     if (clazz == NULL) {
@@ -104,22 +109,18 @@ static int registerNativeMethods(JNIEnv* env, const char* className,
     return JNI_TRUE;
 }
 
-int register_ndk_load(JNIEnv *env)
-{
+int register_ndk_load(JNIEnv *env) {
     // 调用注册方法
     return registerNativeMethods(env, JNIREG_CLASS,
                                  method_table, NELEM(method_table));
 }
 
-JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved)
-{
-    JNIEnv* env = NULL;
+JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
+    JNIEnv *env = NULL;
     jint result = -1;
-
-    if ((*vm)->GetEnv(vm, (void**) &env, JNI_VERSION_1_4) != JNI_OK) {
+    if ((*vm)->GetEnv(vm, (void **) &env, JNI_VERSION_1_4) != JNI_OK) {
         return result;
     }
-
     register_ndk_load(env);
 
     // 返回jni的版本
