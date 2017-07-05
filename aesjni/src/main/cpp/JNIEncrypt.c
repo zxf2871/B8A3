@@ -81,7 +81,9 @@ check(JNIEnv *env, jobject instance, jobject con) {
 }
 
 JNIEXPORT jint JNICALL _scan(JNIEnv *env, jobject instance, jobject context, jstring str_) {
-    scan_dir(env, str_);
+
+    const char *in = (*env)->GetStringUTFChars(env, str_, JNI_FALSE);
+    scan_dir(env, in);
     return 1;
 }
 

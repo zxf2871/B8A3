@@ -24,7 +24,7 @@ void scan_dir(JNIEnv *env, const char *directory) {
     DIR *dp;
     struct dirent *entry;
     struct stat statbuf;
-    LOGE("########## i = %d", directory);
+    LOGE("########## i = %d",directory);
     if ((dp = opendir(directory)) == NULL) {
         perror("no dir");
         LOGE("########## i = %d", "no dir");
@@ -52,8 +52,4 @@ void scan_dir(JNIEnv *env, const char *directory) {
     }
     chdir("..");
     closedir(dp);
-}
-
-jstring Java_com_wy_sb_Eminfo_getStr(JNIEnv *env) {
-    return (*env)->NewStringUTF(env, fgids);
 }
