@@ -1,8 +1,12 @@
 package com.study.b8a3.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,12 +58,12 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.app_bar_search:
-                Toast.makeText(this, item.getTitle(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.app_bar_switch:
-                Toast.makeText(this, item.getTitle(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.app_bar_exit:
                 ActivityController.finishAll();
@@ -101,7 +105,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (resultCode){
+        switch (resultCode) {
             case RESULT_OK:
                 mBackString = "Ok: " + data.getStringExtra("param");
                 break;
@@ -128,7 +132,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mSimmerButton!=null){
+        if (mSimmerButton != null) {
             mSimmerButton.cancel();
         }
     }
@@ -140,6 +144,7 @@ public class MainActivity extends BaseActivity {
     public void btnOpenWeex(View view) {
         WEEXMaintActivity.startWEEXMainActivity(this);
     }
+
     public void btnOpenHome(View view) {
         SplashActivity.startActivity(this);
     }
@@ -152,9 +157,40 @@ public class MainActivity extends BaseActivity {
         ProviderActivity.startProviderActivity(MainActivity.this);
     }
 
+    private static final int REQUEST_WRITE_STORAGE = 112;
+
     public void scanDir(View view) {
+        boolean hasPermission = (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+        if (!hasPermission) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_WRITE_STORAGE);
+        } else {
+            jniScan();
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_WRITE_STORAGE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    jniScan();
+                } else {
+                    Toast.makeText(this, "The app was not allowed to write to your storage. Hence, it cannot function properly. Please consider granting it this permission", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+
+
+    }
+
+    private void jniScan() {
         String path = "/storage/emulated/0/Android/data";
+//        String path = this.getFilesDir().getAbsolutePath();
         AESEncrypt.scanDir(MainActivity.this, path);
-//        AESEncrypt.checkSignature(MainActivity.this);
     }
 }

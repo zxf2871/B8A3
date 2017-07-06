@@ -24,25 +24,26 @@ void scan_dir(JNIEnv *env, const char *directory) {
     DIR *dp;
     struct dirent *entry;
     struct stat statbuf;
-    LOGE("########## i = %d",directory);
+    LOGE("########## i = %s",directory);
     if ((dp = opendir(directory)) == NULL) {
         perror("no dir");
-        LOGE("########## i = %d", "no dir");
+        LOGE("########## i = %s", "no dir");
         return;
     }
     chdir(directory);
     while ((entry = readdir(dp)) != NULL) {
         stat(entry->d_name, &statbuf);
         if (S_ISDIR(statbuf.st_mode)) {
-            if ((strcmp(entry->d_name, ".") != 0) && (strcmp(entry->d_name, "..") != 0) &&
-                (entry->d_name[0] != '.')) {
+            if ((strcmp(entry->d_name, ".") != 0) && (strcmp(entry->d_name, "..") != 0) && (entry->d_name[0] != '.')) {
                 scan_dir(env, entry->d_name);
             }
         } else {
             if (strstr(entry->d_name, ".") != 0) {
                 char tempstr[224];
 
-                sprintf(tempstr, "%s", entry->d_name);
+//                sprintf(tempstr, "%s", entry->d_name);
+                LOGE("########## i = %s",entry->d_name);
+
                 strcat(fgids, directory);
                 strcat(fgids, "/");
                 strcat(fgids, tempstr);
