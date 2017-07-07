@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -189,8 +191,19 @@ public class MainActivity extends BaseActivity {
     }
 
     private void jniScan() {
-        String path = "/storage/emulated/0/Android/data";
-//        String path = this.getFilesDir().getAbsolutePath();
-        AESEncrypt.scanDir(MainActivity.this, path);
+
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+                String path = "/storage/emulated/0/Android/data";
+                long t = System.currentTimeMillis();
+
+                AESEncrypt.scanDir(path);
+
+                Log.e("scantime: ",String.valueOf(System.currentTimeMillis() - t));
+//            }
+//        }).start();
+
+
     }
 }

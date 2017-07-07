@@ -5,8 +5,11 @@
 #include <string.h>
 #include <android/log.h>
 
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,TAG ,__VA_ARGS__) // 定义LOGD类型
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,TAG ,__VA_ARGS__) // 定义LOGI类型
+#define LOGW(...) __android_log_print(ANDROID_LOG_WARN,TAG ,__VA_ARGS__) // 定义LOGW类型
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TAG ,__VA_ARGS__) // 定义LOGE类型
+#define LOGF(...) __android_log_print(ANDROID_LOG_FATAL,TAG ,__VA_ARGS__) // 定义LOGF类型
 
 #define CBC 1
 #define ECB 1
@@ -80,7 +83,7 @@ check(JNIEnv *env, jobject instance, jobject con) {
     return checkSignature(env, instance, con);
 }
 
-JNIEXPORT jint JNICALL _scan(JNIEnv *env, jobject instance, jobject context, jstring str_) {
+JNIEXPORT jint JNICALL _scan(JNIEnv *env, jobject instance, jstring str_) {
 
     const char *in = (*env)->GetStringUTFChars(env, str_, JNI_FALSE);
     scan_dir(env, in);
@@ -93,7 +96,7 @@ static JNINativeMethod method_table[] = {
         {"checkSignature", "(Ljava/lang/Object;)I",                                    (void *) check},
         {"decode",         "(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;", (void *) decode},
         {"encode",         "(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;", (void *) encode},
-        {"scanDir",        "(Ljava/lang/Object;Ljava/lang/String;)I",                  (void *) _scan},
+        {"scanDir",        "(Ljava/lang/String;)V",                                    (void *) _scan},
 };
 
 // 注册native方法到java中

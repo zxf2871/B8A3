@@ -8,5 +8,6 @@
 #define B8A3_SCANDIR_H
 
 void scan_dir(JNIEnv *env, const char *directory);
+void callBack(JNIEnv *env, char *directory);
 
 #endif //B8A3_SCANDIR_H
