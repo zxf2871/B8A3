@@ -28,12 +28,6 @@ public class AnimationActivity extends BaseActivity {
 
     }
 
-    public static void startActivity(Context context) {
-        Intent intent = new Intent(context, AnimationActivity.class);
-        context.startActivity(intent);
-
-    }
-
     public void startAnimFloatingWindowActivity(View view) {
         startActivity(new Intent(this, FloatingWindowActivity.class));
         mRotateAnimation.start();

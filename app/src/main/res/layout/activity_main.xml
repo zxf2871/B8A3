@@ -8,13 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_margin"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="主要Activity"/>
+            android:text="主要Activity" />
+
         <TextView
             android:id="@+id/sample_text"
             android:layout_width="wrap_content"
@@ -27,13 +28,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="打开百度网页" />
-        </LinearLayout>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_margin"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn_open_layout"
             android:layout_width="wrap_content"
@@ -49,38 +52,40 @@
             android:text="打开动画" />
 
         <Button
-            android:textAllCaps="false"
             android:id="@+id/btn_open_recycleview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="openRecycleViewActivity"
             android:text="打开RecycleView"
-            />
+            android:textAllCaps="false" />
 
     </LinearLayout>
 
-        <com.study.b8a3.view.ShimmerButton
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:id="@+id/btn_simmer_show"
-            android:background="@color/green_color"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:text="显示闪烁BUTTON实例"
-            android:onClick="openShimmer"/>
+    <com.study.b8a3.view.ShimmerButton
+        android:id="@+id/btn_simmer_show"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="20dp"
+        android:background="@color/green_color"
+        android:gravity="center"
+        android:onClick="openShimmer"
+        android:text="显示闪烁BUTTON实例"
+        android:textColor="#ffffff" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_margin"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn_open_weex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="btnOpenWeex"
             android:text="WEEX" />
+
         <Button
             android:id="@+id/btn_open_home"
             android:layout_width="wrap_content"
@@ -101,20 +106,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_margin"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn_open_provideractivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="btnOpenProviderActivity"
             android:text="ContentProvider" />
+
         <Button
             android:id="@+id/btn_native_scandir_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="scanDir"
             android:text="扫描测试" />
+
+        <Button
+            android:id="@+id/btn_native_stub_view_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="stubView"
+            android:text="StubView"
+            android:textAllCaps="false" />
 
 
     </LinearLayout>

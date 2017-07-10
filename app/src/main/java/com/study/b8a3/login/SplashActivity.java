@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.study.b8a3.R;
+import com.study.b8a3.StubViewActivity;
 import com.study.b8a3.activity.HomeActivity;
 import com.study.b8a3.main.BaseActivity;
 import com.study.b8a3.utils.Injection;
@@ -20,11 +21,6 @@ public class SplashActivity extends BaseActivity implements LoginContract.View{
         presenter.login("","");
     }
 
-    public static void startActivity(Context context){
-        Intent intent = new Intent(context, SplashActivity.class);
-        context.startActivity(intent);
-    }
-
     @Override
     public void setPresenter(LoginContract.Presenter presenter) {
         mLoginPresenter  = presenter;
@@ -32,13 +28,13 @@ public class SplashActivity extends BaseActivity implements LoginContract.View{
 
     @Override
     public void loginSuccess() {
-        HomeActivity.startActivity(this);
+        HomeActivity.startActivity(this, StubViewActivity.class);
         finish();
     }
 
     @Override
     public void loginError(String message) {
-        LoginActivity.startActivity(this);
+        LoginActivity.startActivity(this, LoginActivity.class);
         finish();
     }
 

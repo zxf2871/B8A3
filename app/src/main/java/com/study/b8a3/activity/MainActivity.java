@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -17,7 +16,9 @@ import android.widget.Toast;
 
 import com.aesjni.AESEncrypt;
 import com.study.b8a3.R;
+import com.study.b8a3.StubViewActivity;
 import com.study.b8a3.animation.AnimationActivity;
+import com.study.b8a3.animation.property.PropertyActivity;
 import com.study.b8a3.provider.ProviderActivity;
 import com.study.b8a3.login.SplashActivity;
 import com.study.b8a3.main.ActivityController;
@@ -120,7 +121,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void openLayoutActivity(View view) {
-        LayoutActivity.startActivity(this);
+        LayoutActivity.startActivity(this, LayoutActivity.class);
     }
 
     public void openRecycleViewActivity(View view) {
@@ -128,7 +129,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void btnOpenAnimation(View view) {
-        AnimationActivity.startActivity(this);
+        AnimationActivity.startActivity(this, AnimationActivity.class);
     }
 
     @Override
@@ -148,7 +149,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void btnOpenHome(View view) {
-        SplashActivity.startActivity(this);
+        SplashActivity.startActivity(this, SplashActivity.class);
     }
 
     public void btnOpenTouchActivity(View view) {
@@ -156,7 +157,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void btnOpenProviderActivity(View view) {
-        ProviderActivity.startProviderActivity(MainActivity.this);
+        startActivity(MainActivity.this, PropertyActivity.class);
     }
 
     private static final int REQUEST_WRITE_STORAGE = 112;
@@ -200,10 +201,14 @@ public class MainActivity extends BaseActivity {
 
                 AESEncrypt.scanDir(path);
 
-                Log.e("scantime: ",String.valueOf(System.currentTimeMillis() - t));
+                Log.e("scantime: ", String.valueOf(System.currentTimeMillis() - t));
             }
         }).start();
 
 
+    }
+
+    public void stubView(View view) {
+        StubViewActivity.startActivity(this, StubViewActivity.class);
     }
 }

@@ -28,11 +28,6 @@ public class HomeActivity extends BaseActivity
 
     private LoginContract.Presenter mLoginPresenter;
 
-    public static void startActivity(Context context){
-        Intent intent = new Intent(context, HomeActivity.class);
-        context.startActivity(intent);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

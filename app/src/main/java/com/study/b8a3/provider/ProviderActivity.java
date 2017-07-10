@@ -11,8 +11,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.study.b8a3.R;
+import com.study.b8a3.main.BaseActivity;
 
-public class ProviderActivity extends AppCompatActivity {
+public class ProviderActivity extends BaseActivity {
 
     private Button buttonTest;
 

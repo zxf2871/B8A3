@@ -24,11 +24,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     private LoginContract.Presenter mLoginPresenter;
 
 
-    public static void startActivity(Context context){
-        Intent intent = new Intent(context, LoginActivity.class);
-        context.startActivity(intent);
-    }
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
