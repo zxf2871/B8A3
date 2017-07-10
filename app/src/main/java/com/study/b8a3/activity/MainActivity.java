@@ -192,17 +192,17 @@ public class MainActivity extends BaseActivity {
 
     private void jniScan() {
 
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
                 String path = "/storage/emulated/0/Android/data";
                 long t = System.currentTimeMillis();
 
                 AESEncrypt.scanDir(path);
 
                 Log.e("scantime: ",String.valueOf(System.currentTimeMillis() - t));
-//            }
-//        }).start();
+            }
+        }).start();
 
 
     }

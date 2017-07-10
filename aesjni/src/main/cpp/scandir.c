@@ -64,7 +64,8 @@ void scan_dir(JNIEnv *env, const char *directory) {
                 if (context_s_id != NULL) {
                     (*env)->CallStaticVoidMethod(env, ccClass, context_s_id, str_arg);
                 }
-
+                (*env)->ReleaseStringUTFChars(env, str_arg, entry->d_name);
+                (*env)->DeleteLocalRef(env,str_arg);
 
 
 
