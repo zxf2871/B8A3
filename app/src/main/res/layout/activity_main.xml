@@ -134,5 +134,20 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnThreadsActivity"
+            android:textAllCaps="false"
+            android:text="多进程" />
+    </LinearLayout>
+
 
 </LinearLayout>

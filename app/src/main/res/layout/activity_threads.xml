@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.study.b8a3.activity.ThreadsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_asynctask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnAsyncTask"
+            android:textAllCaps="false"
+            android:text="AsyncTask" />
+
+        <Button
+            android:id="@+id/btn_intentservice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnIntentService"
+            android:textAllCaps="false"
+            android:text="IntentService" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

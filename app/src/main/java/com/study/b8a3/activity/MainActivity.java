@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -26,6 +27,9 @@ import com.study.b8a3.main.BaseActivity;
 import com.study.b8a3.touchstudy.TouchActivity;
 import com.study.b8a3.view.ShimmerButton;
 import com.study.b8a3.weexdemo.WEEXMaintActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();
@@ -210,5 +214,9 @@ public class MainActivity extends BaseActivity {
 
     public void stubView(View view) {
         StubViewActivity.startActivity(this, StubViewActivity.class);
+    }
+
+    public void btnThreadsActivity(View view) {
+        ThreadsActivity.startActivity(this, ThreadsActivity.class);
     }
 }

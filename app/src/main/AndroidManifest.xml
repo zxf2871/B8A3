@@ -105,7 +105,9 @@
         <activity
             android:name=".animation.property.PropertyActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".StubViewActivity"></activity>
+        <activity android:name=".StubViewActivity" />
+        <activity android:name=".activity.ThreadsActivity" />
+        <service android:name=".thread.LocalIntentService" />
     </application>
 
 </manifest>
