@@ -64,18 +64,30 @@ public class ThreadsActivity extends BaseActivity {
     }
 
     public void btnIntentService(View view) {
-        Intent intent = new Intent(this, LocalIntentService.class);
-        intent.putExtra("task_action", "test");
-        startService(intent);
 
-        intent.putExtra("task_action", "test1");
-        startService(intent);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(ThreadsActivity.this, LocalIntentService.class);
+                intent.putExtra("task_action", "test");
+                startService(intent);
 
-        intent.putExtra("task_action", "test2");
-        startService(intent);
+                intent.putExtra("task_action", "test1");
+                startService(intent);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                intent.putExtra("task_action", "test2");
+                startService(intent);
 
-        intent.putExtra("task_action", "test3");
-        startService(intent);
+                intent.putExtra("task_action", "test3");
+                startService(intent);
+            }
+        }).start();
+
+
 
     }
 
