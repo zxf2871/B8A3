@@ -107,7 +107,16 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".StubViewActivity" />
         <activity android:name=".activity.ThreadsActivity" />
+
         <service android:name=".thread.LocalIntentService" />
+        <service android:name=".aidltest.TaskService"
+            android:process=":remote">
+            <intent-filter >
+                <action android:name="com.study.b8a3.aidltest.BOOK_SERVICE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".aidltest.AIDLActivity"></activity>
     </application>
 
 </manifest>

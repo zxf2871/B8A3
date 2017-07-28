@@ -37,5 +37,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public static void startActivity(Context context, Class activityClass){
         context.startActivity(new Intent(context, activityClass));
+        if(context instanceof Activity){
+            ((Activity) context).finish();
+        }
     }
 }
