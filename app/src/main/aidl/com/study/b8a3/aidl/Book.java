@@ -17,6 +17,10 @@ public class Book implements Parcelable {
         bookString = in.readString();
     }
 
+    public Book(String name){
+        bookString = name;
+    }
+
     public static final Creator<Book> CREATOR = new Creator<Book>() {
         @Override
         public Book createFromParcel(Parcel in) {
@@ -38,5 +42,9 @@ public class Book implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(bookId);
         parcel.writeString(bookString);
+    }
+
+    public String getBookString() {
+        return bookString;
     }
 }

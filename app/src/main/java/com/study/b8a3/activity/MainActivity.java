@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.aesjni.AESEncrypt;
 import com.study.b8a3.R;
 import com.study.b8a3.StubViewActivity;
+import com.study.b8a3.aidltest.AIDLActivity;
 import com.study.b8a3.animation.AnimationActivity;
 import com.study.b8a3.animation.property.PropertyActivity;
 import com.study.b8a3.provider.ProviderActivity;
@@ -42,6 +43,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setBackgroundDrawable(null);
         // Example of a call to a native method
         mTextView = (TextView) findViewById(R.id.sample_text);
         mBackString = (String) mTextView.getText();
@@ -218,5 +220,9 @@ public class MainActivity extends BaseActivity {
 
     public void btnThreadsActivity(View view) {
         ThreadsActivity.startActivity(this, ThreadsActivity.class);
+    }
+
+    public void btnAIDLActivity(View view) {
+        AIDLActivity.startActivity(this, AIDLActivity.class);
     }
 }

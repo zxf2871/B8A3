@@ -147,6 +147,13 @@
             android:onClick="btnThreadsActivity"
             android:textAllCaps="false"
             android:text="多进程" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnAIDLActivity"
+            android:textAllCaps="false"
+            android:text="AIDL" />
     </LinearLayout>
 
 
