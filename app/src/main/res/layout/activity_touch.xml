@@ -20,18 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="50dp"
-        android:background="@color/blue_color"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
-
-            android:text="ViewGroup"
-            android:textColor="#ffff" />
-
+        android:background="@color/blue_color">
         <com.study.b8a3.touchstudy.TouchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -40,6 +29,17 @@
             android:gravity="center"
             android:text="View"
             android:textColor="#ffff" />
+        <com.study.b8a3.touchstudy.TouchView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:background="#ff0000"
+
+            android:text="ViewGroup"
+            android:textColor="#ffff" />
+
+
     </com.study.b8a3.touchstudy.TouchViewGroup>
 
 </LinearLayout>

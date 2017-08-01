@@ -7,13 +7,14 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
- * Created by Administrator on 2017/6/20.
+ * Created by Administrator on 2017/6/20.transact
  */
 
-public class TouchViewGroup extends LinearLayout {
+public class TouchViewGroup extends RelativeLayout {
     public static String TAG = TouchViewGroup.class.getSimpleName();
 
 

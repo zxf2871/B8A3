@@ -5,5 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.study.b8a3.StubViewActivity">
+    <ViewStub
+        android:id="@+id/vs_test"
+        android:layout="@layout/view_stub_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </android.support.constraint.ConstraintLayout>
