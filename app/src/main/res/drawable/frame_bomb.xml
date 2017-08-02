@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    根标签为animation-list，其中oneshot代表着是否只展示一遍，设置为false会不停的循环播放动画
+    根标签下，通过item标签对动画中的每一个图片进行声明
+    android:duration 表示展示所用的该图片的时间长度
+ -->
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:oneshot="true"
+  >
+    <item android:drawable="@drawable/bomb01" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb02" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb03" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb04" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb05" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb06" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb07" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb08" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb09" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb10" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb11" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb12" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb13" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb14" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb15" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb16" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb17" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb18" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb19" android:duration="150"></item>
+    <item android:drawable="@drawable/bomb21" android:duration="150"></item>
+
+</animation-list>

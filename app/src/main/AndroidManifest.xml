@@ -109,14 +109,17 @@
         <activity android:name=".activity.ThreadsActivity" />
 
         <service android:name=".thread.LocalIntentService" />
-        <service android:name=".aidltest.TaskService"
+        <service
+            android:name=".aidltest.TaskService"
             android:process=":remote">
-            <intent-filter >
+            <intent-filter>
                 <action android:name="com.study.b8a3.aidltest.BOOK_SERVICE" />
             </intent-filter>
         </service>
 
-        <activity android:name=".aidltest.AIDLActivity"></activity>
+        <activity android:name=".aidltest.AIDLActivity" />
+        <activity android:name=".animation.property.TweenActivity" />
+        <activity android:name=".animation.property.FrameActivity"></activity>
     </application>
 
 </manifest>
