@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -91,6 +93,7 @@ public class ThreadsActivity extends BaseActivity {
 
     }
 
+
     private static class MyAsyncTask extends AsyncTask<String, String, String> {
 
         private String mName = "AsyncTask";
@@ -154,5 +157,28 @@ public class ThreadsActivity extends BaseActivity {
         for(AsyncTask st:list){
             st.cancel(true);
         }
+    }
+
+
+    class ThreadHandler extends Handler{
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Log.e(TAG, msg.what+"");
+        }
+    }
+
+
+    public void lockThreadTest(View view) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Handler handler = new Handler();
+                Message message = Message.obtain();
+                message.what = 1111;
+                handler.sendMessage(message);
+            }
+        }).start();
+
     }
 }

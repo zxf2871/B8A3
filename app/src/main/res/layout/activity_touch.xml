@@ -39,6 +39,16 @@
             android:text="ViewGroup"
             android:textColor="#ffff" />
 
+        <com.study.b8a3.touchstudy.MyView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            app:my_text="this is my view"
+            app:my_text_color="#ff0000"
+            app:my_background_color="#ff00ff"
+            app:my_text_color_another="#00ffff"
+            app:my_text_size="20sp"/>
+
 
     </com.study.b8a3.touchstudy.TouchViewGroup>
 

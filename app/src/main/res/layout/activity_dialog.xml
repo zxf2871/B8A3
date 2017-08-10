@@ -3,10 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.study.b8a3.activity.DialogActivity">
-    <TextView
+    tools:context="com.study.b8a3.activity.DialogActivity"
+    android:orientation="vertical">
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dialog Activity"/>
+        android:text="上部"/>
+    <Button
+        android:text="中间"
+        android:layout_weight="10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="底部"
+        android:layout_gravity="bottom"/>
 
 </LinearLayout>

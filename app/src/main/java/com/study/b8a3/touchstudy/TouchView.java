@@ -60,5 +60,8 @@ public class TouchView extends android.support.v7.widget.AppCompatTextView {
 //        return false;
     }
 
-
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec,heightMeasureSpec);
+    }
 }

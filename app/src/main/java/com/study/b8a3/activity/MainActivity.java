@@ -4,8 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -21,16 +21,12 @@ import com.study.b8a3.StubViewActivity;
 import com.study.b8a3.aidltest.AIDLActivity;
 import com.study.b8a3.animation.AnimationActivity;
 import com.study.b8a3.animation.property.PropertyActivity;
-import com.study.b8a3.provider.ProviderActivity;
 import com.study.b8a3.login.SplashActivity;
 import com.study.b8a3.main.ActivityController;
 import com.study.b8a3.main.BaseActivity;
 import com.study.b8a3.touchstudy.TouchActivity;
 import com.study.b8a3.view.ShimmerButton;
 import com.study.b8a3.weexdemo.WEEXMaintActivity;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class MainActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();
@@ -43,6 +39,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Debug.startMethodTracing("MainActivity");
         getWindow().setBackgroundDrawable(null);
         // Example of a call to a native method
         mTextView = (TextView) findViewById(R.id.sample_text);
@@ -224,5 +222,15 @@ public class MainActivity extends BaseActivity {
 
     public void btnAIDLActivity(View view) {
         AIDLActivity.startActivity(this, AIDLActivity.class);
+    }
+
+    public void btnFragmentActivity(View view) {
+        MyFragmentActivity.startActivity(this, MyFragmentActivity.class);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Debug.stopMethodTracing();
     }
 }

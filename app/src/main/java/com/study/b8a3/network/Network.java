@@ -1,5 +1,4 @@
-package com.study.b8a3.network;// Copyright (c) 2016 The HAWK Inc. All rights reserved.
-// Author: HAWK Browser Team.
+package com.study.b8a3.network;
 
 import android.content.Context;
 import android.os.AsyncTask;

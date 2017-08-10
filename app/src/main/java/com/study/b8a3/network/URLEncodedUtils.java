@@ -1,6 +1,3 @@
-// Copyright (c) 2016 The HAWK Inc. All rights reserved.
-// Author: HAWK Browser Team.
-
 package com.study.b8a3.network;
 
 import java.io.UnsupportedEncodingException;

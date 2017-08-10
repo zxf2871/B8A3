@@ -8,4 +8,6 @@
     <string name="splash_start">启动</string>
     <string name="user_erorr">用户名为空</string>
     <string name="password_erorr">密码为空</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>
