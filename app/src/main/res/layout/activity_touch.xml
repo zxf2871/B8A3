@@ -16,14 +16,14 @@
         android:text="Activity"
         android:textColor="#ffff" />
 
-    <com.study.b8a3.touchstudy.TouchViewGroup
+    <com.study.b8a3.touchstudy.MyViewGroup
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="50dp"
         android:background="@color/blue_color">
         <com.study.b8a3.touchstudy.TouchView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="20dp"
+            android:layout_height="100dp"
             android:layout_margin="50dp"
             android:background="@color/green_color"
             android:gravity="center"
@@ -50,6 +50,6 @@
             app:my_text_size="20sp"/>
 
 
-    </com.study.b8a3.touchstudy.TouchViewGroup>
+    </com.study.b8a3.touchstudy.MyViewGroup>
 
 </LinearLayout>
