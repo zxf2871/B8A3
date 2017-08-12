@@ -19,11 +19,12 @@
     <com.study.b8a3.touchstudy.MyViewGroup
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="50dp"
+        android:layout_margin="10dp"
+        app:space="40dp"
         android:background="@color/blue_color">
         <com.study.b8a3.touchstudy.TouchView
-            android:layout_width="20dp"
-            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_margin="50dp"
             android:background="@color/green_color"
             android:gravity="center"
@@ -31,7 +32,7 @@
             android:textColor="#ffff" />
         <com.study.b8a3.touchstudy.TouchView
             android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25dp"
             android:background="#ff0000"
