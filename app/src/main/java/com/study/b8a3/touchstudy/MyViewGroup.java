@@ -19,6 +19,8 @@ import com.bumptech.glide.load.data.mediastore.MediaStoreUtil;
 import com.study.b8a3.R;
 import com.study.b8a3.login.LoginContract;
 
+import org.json.JSONObject;
+
 /**
  * Created by Administrator on 2017/6/20.transact
  */
@@ -26,9 +28,10 @@ import com.study.b8a3.login.LoginContract;
 public class MyViewGroup extends ViewGroup {
     public static String TAG = MyViewGroup.class.getSimpleName();
 
-    private VelocityTracker mVelocityTracker;
     private int mSpace = 0;
 
+    //速度最终
+    private VelocityTracker mVelocityTracker;
     //滚动计算辅助类
     private Scroller mScroller;
 
@@ -172,4 +175,13 @@ public class MyViewGroup extends ViewGroup {
         }
     }
 
+
+
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        mVelocityTracker.clear();
+        mVelocityTracker.recycle();
+    }
 }
