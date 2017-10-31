@@ -28,19 +28,28 @@ android {
         }
     }
 
-
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.myConfig
         }
     }
 
-    lintOptions {//设置编译的lint开关，程序在buid的时候，会执行lint检查，有任何的错误或者警告提示，都会终止构建
-        abortOnError false
+    signingConfigs {
+        debug {
+            storeFile file("b8a3.jks")
+        }
+
+        myConfig {
+            storeFile file("b8a3.jks")
+            storePassword "o5352o"
+            keyAlias "b8a3"
+            keyPassword "o5352o"
+        }
     }
 }
-
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -59,7 +68,7 @@ dependencies {
     compile 'com.alibaba:fastjson:1.1.45+'
     compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
     testCompile 'junit:junit:4.12'
-//    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    //    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'com.google.guava:guava:18.0'
     compile project(':aesjni')
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
