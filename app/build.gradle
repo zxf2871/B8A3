@@ -28,27 +28,32 @@ android {
         }
     }
 
-    buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
-        }
-        release {
-            signingConfig signingConfigs.myConfig
-        }
-    }
-
     signingConfigs {
         debug {
-            storeFile file("b8a3.jks")
+            storeFile file("../b8a3.jks")
+            storePassword "o5352o"
+            keyAlias "b8a3"
+            keyPassword "o5352o"
         }
 
-        myConfig {
-            storeFile file("b8a3.jks")
+        release {
+            storeFile file("../b8a3.jks")
             storePassword "o5352o"
             keyAlias "b8a3"
             keyPassword "o5352o"
         }
     }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+
+
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -64,8 +69,8 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'com.taobao.android:weex_sdk:0.9.5+'
-    compile 'com.alibaba:fastjson:1.1.45+'
+//    compile 'com.taobao.android:weex_sdk:0.9.5+'
+//    compile 'com.alibaba:fastjson:1.1.45+'
     compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
     testCompile 'junit:junit:4.12'
     //    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"

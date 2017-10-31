@@ -26,7 +26,6 @@ import com.study.b8a3.main.ActivityController;
 import com.study.b8a3.main.BaseActivity;
 import com.study.b8a3.touchstudy.TouchActivity;
 import com.study.b8a3.view.ShimmerButton;
-import com.study.b8a3.weexdemo.WEEXMaintActivity;
 
 public class MainActivity extends BaseActivity {
     public static String TAG = ThirdActivity.class.getSimpleName();
@@ -40,7 +39,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Debug.startMethodTracing("MainActivity");
+//        Debug.startMethodTracing("MainActivity");
         getWindow().setBackgroundDrawable(null);
         // Example of a call to a native method
         mTextView = (TextView) findViewById(R.id.sample_text);
@@ -146,10 +145,6 @@ public class MainActivity extends BaseActivity {
 
     public void openShimmer(View view) {
         ShimmerActivity.startShimmerActivity(this);
-    }
-
-    public void btnOpenWeex(View view) {
-        WEEXMaintActivity.startWEEXMainActivity(this);
     }
 
     public void btnOpenHome(View view) {
