@@ -1,5 +1,7 @@
 package com.study.b8a3.activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import android.view.MenuItem;
 
 import com.aesjni.AESEncrypt;
 import com.study.b8a3.R;
+import com.study.b8a3.home.HomeFragment;
 import com.study.b8a3.login.LoginContract;
 import com.study.b8a3.login.LoginPresenter;
 import com.study.b8a3.main.BaseActivity;
@@ -32,24 +35,7 @@ public class HomeActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
+        init();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -133,5 +119,13 @@ public class HomeActivity extends BaseActivity
     @Override
     public void loginOutSuccess() {
         this.finish();
+    }
+
+    private void init(){
+        HomeFragment fragment = new HomeFragment();
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.action_container, fragment);
+        transaction.commit();
     }
 }
